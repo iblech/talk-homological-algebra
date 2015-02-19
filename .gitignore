@@ -1,0 +1,10 @@
+*.aux
+*.log
+*.out
+*.toc
+*.run.xml
+*-blx.bib
+*.bbl
+*.blg
+*.nav
+*.snm
