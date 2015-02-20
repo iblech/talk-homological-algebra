@@ -1,4 +1,4 @@
-\documentclass[12pt]{amsart}
+\documentclass{amsart}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{etex}
@@ -10,6 +10,7 @@
 \usepackage[all]{xy}
 
 \usepackage{mathpazo}
+\linespread{1.05}
 
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}[section]
@@ -29,6 +30,7 @@
 \newcommand{\FF}{\mathbb{F}}
 \renewcommand{\AA}{\mathbb{A}}
 \newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
 \newcommand{\C}{\mathcal{C}}
 \newcommand{\D}{\mathcal{D}}
 \newcommand{\E}{\mathcal{E}}
@@ -46,17 +48,20 @@
 \renewcommand{\S}{\mathcal{S}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\RR}{\mathbb{R}}
+\newcommand{\LL}{\mathbb{L}}
 \newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\aaa}{\mathfrak{a}}
 \newcommand{\ppp}{\mathfrak{p}}
 \newcommand{\mmm}{\mathfrak{m}}
 \newcommand{\nnn}{\mathfrak{n}}
+\newcommand{\Ext}{\mathrm{Ext}}
+\newcommand{\Tor}{\mathrm{Tor}}
 \newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\HOM}{\mathcal{H}\mathrm{om}}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\GL}{\mathrm{GL}}
-\newcommand{\placeholder}{\underline{\quad}}
+\newcommand{\placeholder}{\underline{\ \ \ }}
 \newcommand{\ul}[1]{\underline{#1}}
 \newcommand{\Set}{\mathrm{Set}}
 \newcommand{\Grp}{\mathrm{Grp}}
@@ -65,6 +70,8 @@
 \newcommand{\PSh}{\mathrm{PSh}}
 \newcommand{\Zar}{\mathrm{Zar}}
 \newcommand{\Sch}{\mathrm{Sch}}
+\newcommand{\Ab}{\mathrm{Ab}}
+\newcommand{\AbSh}{\mathrm{AbSh}}
 \newcommand{\Mod}{\mathrm{Mod}}
 \newcommand{\Alg}{\mathrm{Alg}}
 \newcommand{\Ring}{\mathrm{Ring}}
@@ -81,6 +88,7 @@
 \DeclareMathOperator{\Int}{int}
 \DeclareMathOperator{\Clos}{cl}
 \DeclareMathOperator{\Kernel}{ker}
+\DeclareMathOperator{\Cokernel}{cok}
 \DeclareMathOperator{\supp}{supp}
 \newcommand{\Ass}{\mathrm{Ass}}
 \newcommand{\Open}{\mathrm{Op}}
@@ -99,6 +107,7 @@
 \newcommand{\resp}{resp.\@\xspace}
 \newcommand{\inv}{inv.\@}
 \newcommand{\notnot}{\emph{not not}\xspace}
+\newcommand{\dd}{{\vee\!\!\!\vee}}
 
 \newcommand{\XXX}[1]{\textbf{XXX: #1}}
 
@@ -106,11 +115,11 @@
 \newcommand{\defequiv}{\vcentcolon\equiv}
 \newcommand{\seq}[1]{\mathrel{\vdash\!\!\!_{#1}}}
 
-\definecolor{gray}{rgb}{0.7,0.7,0.7}
+\newcommand{\stackhref}[1]{\href{http://stacks.math.columbia.edu/tag/#1}{#1}}
 
 \title{A quickstart guide to derived functors}
 \author{Ingo Blechschmidt}
-\email{iblech@web.de}
+%\email{iblech@web.de}
 
 \begin{document}
 
@@ -127,7 +136,8 @@
 \item Diagram chases
 \item Uses: category of coefficient objects, source and target of functors to
 derive
-\item Exact functors (classical and finite limit definition)
+\item Exact functors: classical and finite limit definition, in footnote: what,
+if one doesn't start with \emph{short} exact sequences?
 \end{itemize}
 
 \section{Injectives and projectives}
@@ -153,18 +163,159 @@ derive
 
 \section{Derived functors}
 
+\begin{defn}Let~$F : \A \to \B$ be a left-exact functor between abelian
+categories. Assume that~$\A$ has enough injectives. Then~$\RR F(X)$, the
+\emph{total right-derived functor of~$F$} evaluated at an object~$X$ of~$\A$,
+is the complex
+\[ \RR F(X){:}\quad \cdots \to 0 \to F(I^0) \to F(I^1) \to \cdots, \]
+where~$0 \to X \to I^\bullet$ is an injective resolution of~$X$. The
+\emph{$n$-th right-derived functor of~$F$} evaluated at~$X$ is the~$n$-th
+cohomology of this complex:
+$R^n F(X) \defeq H^n(\RR F(X)) = H^n(F(I^\bullet))$.
+\end{defn}
+
+So, to calculate~$R^n F(X)$, we take an injective resolution of~$X$, apply~$F$
+to this complex (be sure to strip the leading~``$F(X)$''), and then take
+cohomology. Note that, even though the complex~$I^\bullet$ is not acyclic only
+at position zero, the complex~$F(I^\bullet)$ may have cohomology in arbitrary
+high degrees~(!). There is an analogous definition for the left-derived
+functors of right-exact functors, using projective instead of injective
+resolutions.
+
+Since we made the arbitrary choice of an injective resolution, we have to
+discuss well-definedness of course. If~$0 \to X \to J^\bullet$ is a second
+injective resolution, there is a homotopy equivalence~$I^\bullet \simeq
+J^\bullet$ by Lemma~\ref{lemma:inj-he}. This equivalence is preserved by the
+functor~$F$, so the complexes~$F(I^\bullet)$ and~$F(J^\bullet)$ are homotopy
+equivalent as well. In particular, they are quasi-isomorphic and have
+isomorphic cohomology.
+
+Summing up, the complex~$\RR F(X)$ is well-defined up to quasi-isomorphism and~$R^n F(X)$
+is well-defined up to isomorphism. For reasons to be stated below, we don't
+want to stress that with our definition,~$\RR F(X)$ is actually even
+well-defined up to homotopy equivalence.
+
+Suppose we fix injective resolutions for every object of~$\A$. Then the rule~$X
+\mapsto R^n F(X)$ can be made into an additive functor~$R^n F : \A \to \B$,
+since morphisms~$X \to Y$ between objects induce morphisms between their
+associated injective resolutions (which are unique up to homotopy) and
+therefore well-defined morphisms~$R^n F(X) \to R^n F(Y)$.
+
+Different choices of resolutions will induce naturally isomorphic right-derived
+functors.
+
+\begin{ex}We have~$R^0 F(X) \cong F(X)$, naturally in~$X$. To verify this, pick
+an injective resolution~$0 \to X \to I^\bullet$ and apply~$F$ to
+the exact sequence~$0 \to X \to I^0 \to I^1$.
+\end{ex}
+
+It is in this sense that the~$R^n F$ are ``derived'' functors of~$F$; $R^0 F$
+coincides with~$F$ and the higher derived functors bear some relation with~$F$.
+But note that~$R^{n+1} F$ is \emph{not} the first derived functor of~$R^n F$
+(indeed, in general the higher derived functors are neither left- nor
+right-exact, so we cannot derive~$R^n F$) and that there is no Leibniz rule to
+be found.
+
+\begin{ex}Assume~$F$ to even be exact. Then the higher derived functors of~$F$
+vanish, \ie~$R^n F(X) = 0$ for all objects~$X$ and~$n > 0$. To verify this, use
+Lemma~\ref{lemma:inj-acyclic}.\end{ex}
+
+This suggests the following motto: \emph{Derived functors measure the
+failure of a functor to be exact.}
+
+\begin{ex}Consider the dualization functor~$F : \Ab^\op \to \Ab,\,M \mapsto
+\Hom(M,\ZZ)$. Since~$F$ is an instance of a Hom functor, it is left-exact. To
+ensure that the contravariance doesn't cause unnecessary difficulties, we spell
+out precisely what this means: If~$0 \to M \to N \to P \to 0$ is a short exact
+sequence in~$\Ab^\op$ (this really means that we have a short exact sequence~$0
+\leftarrow M \leftarrow N \leftarrow P \leftarrow 0$ in~$\Ab$), then~$0 \to F(M) \to F(N) \to
+F(P)$ is exact in~$\Ab$. To compute~$\RR F(\ZZ/(2))$, we use the projective
+(even free) resolution
+\[ 0 \lra \ZZ \stackrel{2}{\longrightarrow} \ZZ \lra \ZZ/(2) \lra 0, \]
+which corresponds to an injective resolution in~$\Ab^\op$. The total derived
+functor is therefore the complex
+\[ 0 \lra F(\ZZ) \stackrel{2}{\longrightarrow} F(\ZZ) \lra 0, \]
+which can be simplified using~$F(\ZZ) \cong \ZZ$ to
+\[ 0 \lra \ZZ \stackrel{2}{\longrightarrow} \ZZ \lra 0. \]
+Thus we obtain~$R^0 F(\ZZ) \cong F(\ZZ) = 0$ and~$R^1 F(\ZZ) \cong \ZZ/(2)$.
+Note that the torsion did not vanish, but instead moved to~$R^1$.
+\end{ex}
+
+Many important functors are derived functors. For instance,
 \begin{itemize}
-\item Definition
-\item Discussion of the well-definedness (``complexes good, cohomology bad'',
-example from homotopy theory)
-\item Andi's remark
-\item Example: dualization
-\item Examples: sheaf cohomology, Ext, Tor, group cohomology
-\item Motto: measures non-exactness
-\item Fundamental property: long exact sequence (also method of calculation)
-\item Calculation using acyclic resolutions
-\item Uses: fix of non-exactness, many functors are derived functors, better
-statements (i.e. push/pull formula)
+\item the right derived functors of~$\Hom(X, \placeholder) : \A^\op \to
+\Ab$ are the \emph{Ext functors} $\Ext^n(X, \placeholder)$,
+\item the left derived functors of~$M \otimes_A \placeholder : \Mod(A) \to \Ab$
+are the \emph{Tor functors} $\Tor_n(M, \placeholder)$,
+\item the right derived functors of the global sections functor~$\Gamma :
+\AbSh(X) \to \Ab$ calculate \emph{sheaf cohomology}, and
+\item the right derived functors of the functor~$\Mod(G) \to \Ab$ which associates to
+a~$G$-module its subset of~$G$-invariant elements calculate \emph{group
+cohomology}.
+\end{itemize}
+
+The raison d'être for derived functors is given by the following lemma.
+
+\begin{lemma}Let~$F : \A \to \B$ be a left-exact functor between abelian
+categories. Assume that~$\A$ has enough injectives. Then, for any short exact
+sequence~$0 \to X \to Y \to Z \to 0$ in~$\A$, there is an induced long exact
+sequence
+\[ 0 \to F(X) \to F(Y) \to F(Z) \to R^1 F(X) \to R^1 F(Y) \to R^1 F(Z) \to R^2
+F(X) \to \cdots, \]
+depending functorially on the short exact sequence.\end{lemma}
+\begin{proof}Use the \emph{horseshoe lemma} to obtain a short exact sequence
+relating injective resolutions of~$X$, $Y$, and~$Z$. Then perform the usual
+diagram chase to construct the connecting morphisms.\end{proof}
+
+Note that the lemma shows very visibly that~$F$ is exact if and only if~$R^1 F
+= 0$.
+
+In practice, calculating the higher derived functors can be quite hard. There
+are two main techniques: One can use exact sequences (and spectral sequences)
+to draw some conclusions about the derived functors, or hope that there are
+more amenable resolutions than resolutions by unwieldy injectives available. To
+this end, the following lemma is crucial:
+
+\begin{lemma}Let~$F : \A \to \B$ be a left-exact functor between abelian
+categories. Assume that~$\A$ has enough injectives. Let~$X$ be an object
+of~$\A$. Let~$0 \to X \to U^\bullet$ be a resolution of~$X$ by
+\emph{$F$-acyclic objects}, \ie objects such that~$R^{\geq 1}F(U^m) = 0$.
+Then~$\RR F(X)$ is quasi-isomorphic to~$F(U^\bullet)$ and in particular~$R^n
+F(X) \cong H^n(F(U^\bullet))$.\footnote{Note that~$\RR F(X)$ will in general
+\emph{not} be homotopy equivalent to~$F(U^\bullet)$. This is the reason why we
+identify~$\RR F(X)$ up to quasi-isomorphism and not up to homotopy equivalence.}\end{lemma}
+
+In other words, we may use resolutions by~$F$-acyclic objects instead of
+injective objects to calculate the derived functors. For instance, we can use
+flat resolutions to calculate~$\Tor$ and flabby resolutions to calculate sheaf
+cohomology.
+
+Derived functors can be used to fix several defects in the original functors. The
+paramount defect of a non-exact functor is, of course, its failure to preserve
+exactness. This is fixed by the long exact sequence. But derived
+functors also fix the failure of certain identities. For instance, if~$M$ is an
+arbitrary~$A$-module, in general it does not hold that
+\[ M^{\vee\vee} \defeq \Hom(\Hom(M,A),A) \cong M. \]
+But, denoting by~$(\placeholder)^{\dd}$ the total derived functor of the
+dualization functor, the complex~$M^{\dd\dd}$ \emph{is} quasi-isomorphic to~$M$
+(regarded as a complex concentrated in degree zero).\footnote{We are skating
+over some details here. In particular, we have not explained how to apply~$\RR
+F$ to a complex~$K^\bullet$ (instead of a single object); this is done by
+finding a quasi-isomorphism~$K^\bullet \to I^\bullet$ to a complex consisting
+of injectives and setting~$\RR F(K^\bullet) \defeq F(I^\bullet)$. Also one has
+to impose some finiteness restrictions, for instance~$A$ should be Noetherian
+and~$M$ finitely generated.} Similarly, in algebraic geometry, there is the
+\emph{projection formula}
+\[ \pi_*\E \otimes \F \cong \pi_*(\E \otimes \pi^*\G), \]
+valid in the case that~$\G$ is a locally free sheaf.
+For the derived functors, the formula holds in complete generality, assuming
+only some finiteness conditions:
+\[ \RR\pi_*(\E^\bullet) \otimes^\LL \F^\bullet \simeq_\text{qis}
+\RR\pi_*(\E^\bullet \otimes^\LL \LL\pi^*\G^\bullet). \]
+
+
+\begin{itemize}
+\item somewhere: ``complexes good, cohomology bad'', example from homotopy theory
 \end{itemize}
 
 \section{Example: Ext}
