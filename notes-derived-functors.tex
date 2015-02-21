@@ -142,11 +142,117 @@ if one doesn't start with \emph{short} exact sequences?
 
 \section{Injectives and projectives}
 
+For the theory of derived functors, injective and projective objects are very
+important. We'll discuss why below.
+
+\begin{defn}An object~$I$ of an abelian category is \emph{injective} if and
+only if, for any monomorphism~$X \hookrightarrow Y$ and any morphism~$X \to
+I$, there exists a lift of that morphism to~$Y$.
+\[ \xymatrix{
+  0 \ar[r] & X \ar@{^{(}->}[r] \ar[d] & Y \ar@{-->}[ld] \\
+  & I
+} \]
+Dually, an object~$P$ is \emph{projective} if and only if, for any
+epimorphism~$X \twoheadrightarrow Y$ and any morphism~$P \to X$, there exists a
+co-lift of that morphism to~$Y$.
+\[ \xymatrix{
+   X \ar@{->>}[r] & Y \ar[r] & 0 \\
+  & P \ar[u] \ar@{-->}[lu]
+} \]
+\end{defn}
+
+Note that no uniqueness of the lifts is required.
+
+\begin{ex}In the category of vector spaces over some field, assuming the axiom
+of choice, any object~$I$ is injective: Simply take a basis of~$X$, extend it to a
+basis of~$Y$, and define~$Y \to I$ by zero on the extended zero. This gives
+further indication that categories of vector spaces are not very interesting
+from a homological point of view.\end{ex}
+
+\begin{ex}\emph{Baer's criterion} states that in the category of abelian
+groups, assuming the axiom of choice, a group~$G$ is injective if and only if
+it is \emph{divisible}, \ie if for any~$x \in G$ and~$n \geq 1$ there exists an
+element~$y \in G$ such that~$x = ny$.\footnote{The ``only if'' direction is
+easy: Let~$x \in G$ and~$n \geq 1$. Then consider the injective map~$\ZZ
+\xrightarrow{n} \ZZ$. The sought element~$y$ can be obtained as the image
+of~$1$ under a lift of the map~$\ZZ \to G,\,1 \mapsto x$.} For example, the
+groups~$\QQ$ and~$\QQ/\ZZ$ are injective.
+\end{ex}
+
+Injective objects are generally regarded as huge, unwieldy objects. They are
+important for the theory, but no practical calculations are made with them.
+Projective objects, on the other hand, are often much more accessible. This is
+of course a purely social statement, since the injective objects in an abelian
+category~$\A$ are precisely the projective objects in~$\A^\op$.
+
+\begin{ex}In the category of modules over some ring, any finite free module~$P$ is
+projective: Choose a basis of~$P$ and pick preimages under~$X
+\twoheadrightarrow Y$ of the images of the basis vectors in~$Y$. Use these
+preimages to define the co-lift~$P \to X$. More generally, assuming the axiom
+of choice, any (not necessarily finite) free module is projective. The precise
+characterization is that a module is projective if and only if it is a direct
+summand of a free module.\footnote{The relationship to other properties
+of~$R$-modules is as follows: \\
+\[ \xymatrixcolsep{5pc}\xymatrix{
+  \text{free} \ar@/^1pc/@{=>}[r] &
+  \text{projective} \ar@/^1pc/@{=>}[r] \ar@/^1pc/@{==>}[l]^{\text{$R$ local
+  or $R$ PID}} &
+  \text{flat} \ar@/^1pc/@{=>}[r] \ar@/^1pc/@{==>}[l]^{\text{$R$ perfect}} &
+  \text{torsionfree} \ar@/^1pc/@{==>}[l]^{\text{$R$ Dedekind domain}}
+} \]}\end{ex}
+
+\begin{ex}Assuming the axiom of choice, any vector space is free and thus
+projective.\end{ex}
+
+\begin{ex}An easy example of a projective module which is not free is
+the~$\ZZ/(6)$-module~$\ZZ/(2)$. It is projective because there is the direct sum
+decomposition $\ZZ/(6) \cong \ZZ/(2) \oplus \ZZ/(3)$. It is not free because
+its number of elements is not a multiple of~$6$.\end{ex}
+
+\begin{ex}Let~$\mmm = (3, 1 + \sqrt{-5})$ be the famous example of an ideal
+of~$R = \ZZ[\sqrt{-5}]$ which is locally, but not globally principal.
+Then~$\mmm$ is projective but not free.\end{ex}
+
+\begin{ex}By the
+\href{http://ncatlab.org/nlab/show/Serre-Swan+theorem}{\emph{Serre--Swan
+theorem}}, vector bundles provide a systematic source of projective modules.
+Let~$M$ be a module over a ring~$R$. Then the induced quasicoherent
+module~$M^\sim$ on~$\Spec A$ is a vector bundle (\ie a finite free sheaf of
+modules) if and only if~$M$ is projective and finitely generated. It is a
+trivial bundle if and only if~$M$ is finite free. There is an analogous
+relation in the smooth setting: The category of smooth vector bundles on a
+compact manifold~$M$ is, by taking global sections, equivalent to the category
+of finitely generated projective modules over~$\C^\infty(M)$.
+\end{ex}
+
+The reason why injective and projective objects are important in homological
+algebra is that they \emph{have great exactness properties}. The following
+lemma makes one of this properties precise. Injective and projective objects
+thus form the building blocks by which other objects are \emph{resolved by} --
+see the next section.
+
+\begin{lemma}Let~$F : \A \to \B$ be an additive functor between abelian
+categories. Let~$X^\bullet$ be a bounded below complex of injective objects or
+a bounded above complex of projective objects. If~$X^\bullet$ is acyclic,
+then~$F(X^\bullet)$ is acyclic as well~(!).\end{lemma}
+
+Note that the statement is totally false without the injectivity or
+projectivity assumption.
+
+\begin{proof}One can show that that such a complex is homotopy equivalent to
+the zero complex. Any additive functor preserves homotopy equivalences.
+Therefore the image complex is too homotopy equivalent to zero and in
+particular acyclic.
+
+The already interesting special case of three-term complexes, \ie short exact
+sequences, can be proved by a simpler argument: If~$0 \to A \to B \to C \to 0$
+is a short exact sequence with~$A$ injective or~$C$ projective, one can
+construct a retraction of~$A \to B$ respectively a section of~$B \to C$.
+Therefore the sequence splits. The claim follows since additive functors
+preserve biproducts.\end{proof}
+
 \begin{itemize}
-\item Definition
-\item Examples
-\item Injectives are scary
-\item Uses: resolutions, lex[bounded acycl. inj.] acycl.
+\item Check statement about vector bundles
 \end{itemize}
 
 \section{Resolutions}
@@ -159,6 +265,7 @@ if one doesn't start with \emph{short} exact sequences?
 \item Motto: $X = I^0 - I^1 + \ldots$
 \item Construction of free resolutions
 \item Koszul resolutions
+\item Homological dimension
 \end{itemize}
 
 \section{Derived functors}
@@ -338,6 +445,7 @@ only some finiteness conditions:
 \section{Outlook}
 
 \begin{itemize}
+\item Unbounded resolutions
 \item Derived categories: definition, composition of derived functors,
 $D^b(X)$ $f^!$
 \item Model categories: $\mathrm{sAb} \simeq \mathrm{Kom}^{\leq
