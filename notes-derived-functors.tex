@@ -9,6 +9,20 @@
 \usepackage{hyperref}
 \usepackage[all]{xy}
 
+% http://tex.stackexchange.com/a/146081
+\usepackage{etoc}
+\etocsetlevel{sectionsummary}{2}
+\newcommand*{\sectionsummary}[1]{\etoctoccontentsline{sectionsummary}{#1}}
+\etocsettocstyle{\bigskip\centering\scshape Contents
+                  \par\normalfont\raggedright}{\bigskip}
+\makeatletter
+%\let\original@l@section\l@section
+%\etocsetstyle{section}{}{\original@l@section{\numberline{\etocnumber}\etocname}{\etocpage}}{}
+\etocsetstyle{section}{\normalfont}{\numberline{\etocnumber}\etocname}{\hfill\etocpage\par}{}
+\makeatother
+\etocsetlevel{sectionsummary}{2}
+\etocsetstyle{sectionsummary}{\hskip1.74em}{\textit{\small\etocname}}{\par\vskip-0.5em}{}
+
 \usepackage{mathpazo}
 \linespread{1.05}
 
@@ -119,15 +133,22 @@
 
 \title{A quickstart guide to derived functors}
 \author{Ingo Blechschmidt}
-%\email{iblech@web.de}
+\email{iblech@web.de}
+
+\DeclareRobustCommand{\SkipTocEntry}[5]{}
 
 \begin{document}
 
 \maketitle
 
-\section{References}
+\tableofcontents
+
+\addtocontents{toc}{\SkipTocEntry}
+\section*{References}
 
 \section{Abelian categories}
+\sectionsummary{Definition \textbullet{} examples \textbullet{} diagram chasing
+\textbullet{} uses \textbullet{} (half-)exact functors}
 
 \begin{itemize}
 \item Definition
@@ -141,6 +162,7 @@ if one doesn't start with \emph{short} exact sequences?
 \end{itemize}
 
 \section{Injectives and projectives}
+\sectionsummary{Definition \textbullet{} examples \textbullet{} uses}
 
 For the theory of derived functors, injective and projective objects are very
 important. We'll discuss why below.
@@ -256,6 +278,8 @@ preserve biproducts.\end{proof}
 \end{itemize}
 
 \section{Resolutions}
+\sectionsummary{Definition \textbullet{} examples \textbullet{} interpretation
+\textbullet{} uses}
 
 \begin{defn}An \emph{injective resolution} of an object~$X$ in an abelian
 category is an exact sequence of the form~$0 \to X \to I^0 \to I^1 \to \cdots$,
@@ -438,6 +462,8 @@ complexes.}
 \end{defn}
 
 \section{Derived functors}
+\sectionsummary{Definition \textbullet{} well-definedness \textbullet{} examples
+\textbullet{} long exact sequence \textbullet{} uses}
 
 \begin{defn}Let~$F : \A \to \B$ be a left-exact functor between abelian
 categories. Assume that~$\A$ has enough injectives. Then~$\RR F(X)$, the
@@ -595,6 +621,8 @@ only some finiteness conditions:
 \end{itemize}
 
 \section{Example: Ext}
+\sectionsummary{Definition \textbullet{} lifting problems \textbullet{}
+extensions}
 
 \begin{itemize}
 \item Lifting problems
@@ -602,6 +630,8 @@ only some finiteness conditions:
 \end{itemize}
 
 \section{Example: Sheaf cohomology}
+\sectionsummary{Definition \textbullet{} comparison with singular cohomology
+\textbullet{} uses}
 
 \begin{itemize}
 \item Resolution of $\underline{\RR}$
@@ -612,6 +642,8 @@ only some finiteness conditions:
 \end{itemize}
 
 \section{Outlook}
+\sectionsummary{Unbounded complexes \textbullet{} derived categories
+\textbullet{} model categories}
 
 \begin{itemize}
 \item Unbounded resolutions
