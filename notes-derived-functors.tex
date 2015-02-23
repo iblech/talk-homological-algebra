@@ -9,6 +9,11 @@
 \usepackage{hyperref}
 \usepackage[all]{xy}
 
+\usepackage{shadethm}
+\setlength{\shadeboxsep}{4pt}
+\setlength{\shadeleftshift}{-\shadeboxsep}
+\setlength{\shaderightshift}{-\shadeboxsep}
+
 % http://tex.stackexchange.com/a/146081
 \usepackage{etoc}
 \etocsetlevel{sectionsummary}{2}
@@ -21,7 +26,7 @@
 \linespread{1.05}
 
 \theoremstyle{definition}
-\newtheorem{defn}{Definition}[section]
+\newshadetheorem{defn}{Definition}[section]
 \newtheorem{ex}[defn]{Example}
 \newtheorem{non-ex}[defn]{Non-example}
 
@@ -573,7 +578,12 @@ a \emph{quasi-isomorphism} by the following definition.
 
 \begin{defn}A morphism of complexes~$K^\bullet \to L^\bullet$ is a
 \emph{quasi-isomorphism} if the induced morphisms~$H^n(K^\bullet) \to
-H^n(L^\bullet)$ in cohomology are isomorphisms for all~$n$.\footnote{Note that
+H^n(L^\bullet)$ in cohomology are isomorphisms for all~$n$.\footnotemark
+\end{defn}
+
+Any homotopy equivalence is a quasi-isomorphism, but the converse is totally
+false.
+\footnotetext{Note that
 if~$K^\bullet \to L^\bullet$ is a quasi-isomorphism, there is usually no
 quasi-isomorphism in the opposite direction. For instance, there is no
 quasi-isomorphism~$(\ZZ/(2))[0] \to P^\bullet$ when~$P^\bullet \to \ZZ/(2) \to
@@ -587,7 +597,6 @@ that~$K^\bullet$ and~$L^\bullet$ are quasi-isomorphic is slightly stronger than
 to say that they have isomorphic cohomology. In the latter case, there is no
 guarantee that the isomorphisms are induced by a (zigzag of) morphisms of
 complexes.}
-\end{defn}
 
 \section{Derived functors}
 \sectionsummary{Definition \textbullet{} well-definedness \textbullet{} examples
