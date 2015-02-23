@@ -140,11 +140,11 @@
 
 \begin{document}
 
-\begin{abstract}These notes give a self-contained exposition of the basic
+\begin{abstract}These notes give an informal exposition of the basic
 theory on derived functors. They are aimed at students who have seen~$\Ext$
 or~$\Tor$ appearing once or twice and want to know more about those derived
-functors. No prior knowledge of homological algebra is assumed, however, one
-should be familiar with the notions of exact sequences and chain complexes, as
+functors. No prior knowledge of homological algebra is assumed. However, one
+should be familiar with exact sequences and chain complexes, as
 for instance provided by a first course on algebraic topology.
 \end{abstract}
 
@@ -210,8 +210,8 @@ is bilinear and:
 \item There exists a \emph{zero object}, and for any pair of objects~$X$
 and~$Y$, there exists a \emph{biproduct}~$X \oplus Y$ (simultaneously a
 coproduct and a product).
-\item For any morphism~$f : X \to Y$, there exists a \emph{kernel}~$K
-\hookrightarrow X$ and a \emph{cokernel}~$Y \twoheadrightarrow K$.
+\item For any morphism~$f : X \to Y$, there exists a \emph{kernel}~$\Kernel(f)
+\hookrightarrow X$ and a \emph{cokernel}~$Y \twoheadrightarrow \Cokernel(f)$.
 \item An appropriate formulation of the homomorphism theorem holds.
 \end{enumerate}
 \end{defn}
@@ -531,7 +531,9 @@ that~$\Ext^1(T,I) = 0$ for all objects~$T$; dually, an object~$P$ is projective
 if and only if~$\Ext^1(P,T) = 0$ for alle objects~$T$.} The homological
 dimension is one way to measure the homological complexity of a category. For
 instance, the category of vector spaces over a field has homological dimension
-zero, since any object is projective (and injective). More generally, there is
+zero, since any object is projective (and injective).
+
+More generally, there is
 an intriguing relation between the homological dimension of the category of
 modules over a ring and its Krull dimension: If the ring is a \emph{regular
 ring}, they coincide. For instance, the homological dimension of the category
@@ -732,8 +734,10 @@ identify~$\RR F(X)$ up to quasi-isomorphism and not up to homotopy equivalence.}
 
 In other words, we may use resolutions by~$F$-acyclic objects instead of
 injective objects to calculate the derived functors. For instance, we can use
-flat resolutions to calculate~$\Tor$ and flabby resolutions to calculate sheaf
-cohomology.
+\emph{flat resolutions} to calculate~$\Tor$ and \emph{flabby resolutions} to calculate sheaf
+cohomology. The general philosophy of derived functors is therefore as follows:
+The complex~$\RR F(X)$ is obtained by replacing~$X$ with a (complex of) objects
+which are in some sense well-suited to~$F$ and applying~$F$ to those.
 
 Derived functors can be used to fix several defects in the original functors. The
 paramount defect of a non-exact functor is, of course, its failure to preserve
@@ -746,10 +750,10 @@ But, denoting by~$(\placeholder)^{\dd}$ the total derived functor of the
 dualization functor, the complex~$M^{\dd\dd}$ \emph{is} quasi-isomorphic to~$M$
 (regarded as a complex concentrated in degree zero).\footnote{We are skating
 over some details here. In particular, we have not explained how to apply~$\RR
-F$ to a complex~$K^\bullet$ (instead of a single object); this is done by
+F$ to a \emph{complex}~$K^\bullet$ (instead of a single object); this is done by
 finding a quasi-isomorphism~$K^\bullet \to I^\bullet$ to a complex consisting
 of injectives and setting~$\RR F(K^\bullet) \defeq F(I^\bullet)$. Also one has
-to impose some finiteness restrictions, for instance~$A$ should be Noetherian
+to impose some finiteness conditions, for instance~$A$ should be Noetherian
 and~$M$ finitely generated.} Similarly, in algebraic geometry, there is the
 \emph{projection formula}
 \[ \pi_*\E \otimes \F \cong \pi_*(\E \otimes \pi^*\G), \]
@@ -798,3 +802,7 @@ $D^b(X)$ as an invariant, derived equivalence, $f^!$
 \end{itemize}
 
 \end{document}
+
+Give references for derived categories:
+* https://math.berkeley.edu/~mhaiman/math256-fall13-spring14/cohomology-1_derived-cat.pdf
+* Derived categories for the working mathematician
