@@ -13,14 +13,8 @@
 \usepackage{etoc}
 \etocsetlevel{sectionsummary}{2}
 \newcommand*{\sectionsummary}[1]{\etoctoccontentsline{sectionsummary}{#1}}
-\etocsettocstyle{\bigskip\centering\scshape Contents
-                  \par\normalfont\raggedright}{\bigskip}
-\makeatletter
-%\let\original@l@section\l@section
-%\etocsetstyle{section}{}{\original@l@section{\numberline{\etocnumber}\etocname}{\etocpage}}{}
+\etocsettocstyle{}{}
 \etocsetstyle{section}{\normalfont}{\numberline{\etocnumber}\etocname}{\hfill\etocpage\par}{}
-\makeatother
-\etocsetlevel{sectionsummary}{2}
 \etocsetstyle{sectionsummary}{\hskip1.74em}{\textit{\small\etocname}}{\par\vskip-0.5em}{}
 
 \usepackage{mathpazo}
@@ -141,7 +135,37 @@
 
 \begin{document}
 
+\begin{abstract}These notes give a self-contained exposition of the basic
+theory on derived functors. They are aimed at students who have seen~$\Ext$
+or~$\Tor$ appearing once or twice and want to know more about those derived
+functors. No prior knowledge of homological algebra is assumed, however, one
+should be familiar with the notions of exact sequences and chain complexes, as
+for instance provided by a first course on algebraic topology.
+\end{abstract}
+
 \maketitle
+\thispagestyle{empty}
+
+\addtocontents{toc}{\SkipTocEntry}
+\section*{In a nutshell}
+
+Let~$F : \A \to \B$ be a left-exact functor between abelian categories (for
+instance, categories of modules). Let~$0 \to X \to Y \to Z \to 0$ be a short
+exact sequence in~$\A$. Then the induced sequence~$0 \to FX \to FY \to FZ$ is
+only exact at the first two terms, the morphism~$FY \to FZ$ may fail to be an
+epimorphism. It is therefore a natural question how to extend this sequence on the
+right to obtain an exact sequence. The \emph{right-derived
+functors} of~$F$ answer this question: There is a long exact sequence
+\[ 0 \to F(X) \to F(Y) \to F(Z) \to R^1F(X) \to R^1F(Y) \to R^1F(Z) \to
+R^2F(X) \to \cdots \]
+depending functorially on the given short exact sequence.
+To construct~$R^n F(X)$, one picks an \emph{injective resolution}~$0 \to X \to
+I^\bullet$ of~$X$ and sets~$R^n F(X) \defeq H^n(F(I^\bullet))$.
+\vfill
+
+\addtocontents{toc}{\SkipTocEntry}
+\section*{Contents}
+\vskip-1.5em
 
 \tableofcontents
 
