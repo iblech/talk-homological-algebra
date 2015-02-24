@@ -102,6 +102,7 @@
 \DeclareMathOperator{\Ann}{Ann}
 \DeclareMathOperator{\Int}{int}
 \DeclareMathOperator{\Clos}{cl}
+\DeclareMathOperator{\Image}{im}
 \DeclareMathOperator{\Kernel}{ker}
 \DeclareMathOperator{\Cokernel}{cok}
 \DeclareMathOperator{\supp}{supp}
@@ -225,6 +226,15 @@ there will be an obvious notion of kernel and cokernel.
 \begin{non-ex}The category of sets, the category of topological spaces and the
 category of all (not necessarily commutative) groups are not abelian
 categories.\end{non-ex}
+
+\begin{non-ex}The category of Hilbert spaces and the category of Banach spaces
+are not abelian. One can check than in these categories, the categorical image
+of a continuous linear map is calculated as the \emph{closure} of the
+set-theoretical image. Therefore the homomorphism theorem fails: For instance,
+let~$\iota : U \hookrightarrow X$ be the inclusion of a linear subspace which is
+not closed. Then the induced map~$U/\Kernel(\iota) \to \Image(\iota)$, \ie~$U
+\to \overline{U}$, is not an isomorphism.
+\end{non-ex}
 
 \begin{ex}Let~$\A$ be an abelian category. Then the category of (cochain)
 complexes in~$\A$,~$\Kom(\A)$, is an abelian category with componentwise
