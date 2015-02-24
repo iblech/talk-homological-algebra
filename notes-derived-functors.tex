@@ -232,7 +232,7 @@ addition of morphisms and componentwise kernels and cokernels.\end{ex}
 
 \begin{ex}Let~$X$ be a topological space. Then the category of sheaves of
 abelian groups on~$X$,~$\AbSh(X)$, is an abelian category. The kernel of a
-morphism of such sheaves is calculated as its naive presheaf kernel, the
+morphism of such sheaves is calculated as its naive presheaf kernel, its
 cokernel is the sheafification of the naive presheaf cokernel.\end{ex}
 
 Abelian categories are a natural setting for talking about exact sequences. The
@@ -251,7 +251,8 @@ This can be made precise in several ways; check the \emph{Freyd--Mitchell
 embedding theorem} and (the first page of) Bergman's article
 \href{https://math.berkeley.edu/~gbergman/papers/unpub/elem-chase.pdf}{\emph{A
 note on abelian categories -- translating element-chasing proofs, and exact
-embedding in abelian groups}}.
+embedding in abelian groups}}. As a consequence, nothing is lost if the reader
+chooses to restrict all following abelian categories to module categories.
 
 The main use of abelian categories in homological algebra is as
 \emph{categories of coefficient objects} (for taking cohomology in, for
@@ -260,15 +261,19 @@ end, the following definition is crucial.
 
 \begin{defn}A functor~$F : \A \to \B$ between abelian categories is
 \emph{additive} if and only if the induced maps~$\Hom_\A(X,Y) \to
-\Hom_\B(FX,FY)$ are homomorphisms of groups. An additive functor~$F$ is
+\Hom_\B(FX,FY)$ are homomorphisms of groups.
+
+An additive functor~$F$ is
 \emph{exact} if and only if, for any short exact sequence~$0 \to X \to Y \to Z
 \to 0$ in~$\A$, the induced sequence~$0 \to FX \to FY \to FZ \to 0$ is exact
-in~$\B$. It is \emph{left-exact} if at least~$0 \to FX \to FY \to FZ$ is still
+in~$\B$.
+
+It is \emph{left-exact} if at least~$0 \to FX \to FY \to FZ$ is always still
 exact and \emph{right-exact} if at least~$FX \to FY \to FZ \to 0$ is
 exact.\end{defn}
 
 \begin{ex}Let~$T$ be an~$A$-module. The functor~$\Mod(A) \to \Ab,\,M
-\mapsto M \otimes_A T$ is always right-exact. It is exact if and only if~$T$
+\mapsto M \otimes_A T$ is right-exact. It is exact if and only if~$T$
 is flat over~$A$.\end{ex}
 
 \begin{ex}Let~$T$ be an object of an arbitrary abelian category~$\A$. The
@@ -278,6 +283,12 @@ Hom functor~$X \mapsto \Hom_\A(X,T)$, regarded as a covariant functor~$\A^\op
 \to \Ab$, is left-exact as well. (It is exact if and only if~$T$ is
 \emph{injective.})\end{ex}
 
+A useful property of exact functors is that they \emph{commute with
+cohomology}. More precisely, if~$K^\bullet$ is a chain complex in an abelian
+category~$\A$, and~$F : \A \to \B$ is an exact functor, then there is a natural
+isomorphism~$H^n(F(K^\bullet)) \cong F(H^n(K^\bullet))$. This is because exact
+functors preserve kernels, cokernels, and images.
+
 \begin{lemma}Let~$F : \A \to \B$ be a left-exact functor. Let~$0 \to X \to Y
 \to Z$ be an exact sequence in~$\A$ (note the missing zero at the right end).
 Then the induced sequence~$0 \to FX \to FY \to FZ$ is exact. The
@@ -285,7 +296,10 @@ dual statement for right-exact functors holds as well.\end{lemma}
 
 \begin{lemma}An additive functor between abelian categories is left-exact if
 and only if it preserves finite limits. It is right-exact if and only if it
-preserves finite colimits.\end{lemma}
+preserves finite colimits.\footnote{With this lemma, left-exactness
+of~$\Hom_\A(T,\placeholder)$ and of~$\Hom_\A(\placeholder,T)$ follows from
+general abstract nonsense, since the set-valued Hom functors of any category
+preserve limits and since limits in~$\Ab$ are calculated just as in~$\Set$.}\end{lemma}
 
 \section{Injectives and projectives}
 \sectionsummary{Definition \textbullet{} examples \textbullet{} uses}
@@ -313,7 +327,7 @@ Note that no uniqueness of the lifts is required.
 
 \begin{ex}In the category of vector spaces over some field, assuming the axiom
 of choice, any object~$I$ is injective: Simply take a basis of~$X$, extend it to a
-basis of~$Y$, and define~$Y \to I$ by zero on the extended zero. This gives
+basis of~$Y$, and define~$Y \to I$ on this basis. This gives
 further indication that categories of vector spaces are not very interesting
 from a homological point of view.\end{ex}
 
@@ -365,8 +379,14 @@ Considered as an~$R$-module, it is projective but not free.\end{ex}
 \href{http://ncatlab.org/nlab/show/Serre-Swan+theorem}{\emph{Serre--Swan
 theorem}}, vector bundles provide a systematic source of projective modules.
 Let~$M$ be a module over a ring~$R$. Then the induced quasicoherent
-module~$M^\sim$ on~$\Spec A$ is a vector bundle (\ie a finite free sheaf of
-modules) if and only if~$M$ is projective and finitely generated. It is a
+module~$M^\sim$ on~$\Spec R$ is a vector bundle (\ie a finite free sheaf of
+modules) if and only if~$M$ is projective and finitely generated.\footnote{This
+corresponds to the fact that a module is projective and finitely generated if
+and only if there is a partition~$1 = \sum_i f_i \in R$ such that the localized
+modules~$M[f_i^{-1}]$ are finite free~$R[f_i^{-1}]$-modules. See for instance
+Theorem~7.22 in \href{http://math.uga.edu/~pete/integral.pdf}{Pete Clark's
+notes on commutative algebra}.}
+It is a
 trivial bundle if and only if~$M$ is finite free. There is an analogous
 relation in the smooth setting: The category of smooth vector bundles on a
 compact manifold~$M$ is, by taking global sections, equivalent to the category
@@ -411,10 +431,6 @@ satisfy the five relations~$\pi_X \circ \iota_X = \id_X$, $\pi_Y \circ \iota_Y
 \pi_X + \iota_Y \circ \pi_Y = \id_{X \oplus Y}$. Additive functors carry these
 equations into equations of a similar kind.}
 \end{proof}
-
-\begin{itemize}
-\item Check statement about vector bundles
-\end{itemize}
 
 \section{Resolutions}
 \sectionsummary{Definition \textbullet{} examples \textbullet{} interpretation
@@ -648,7 +664,7 @@ since a morphism~$X \to Y$ between objects induces, by Lemma~\ref{lemma:inj-func
 associated injective resolutions (unique up to homotopy) and
 therefore a well-defined morphism~$R^n F(X) \to R^n F(Y)$.
 
-Different choices of resolutions lead to naturally isomorphic right-derived
+Different choices of resolutions lead to naturally isomorphic derived
 functors.
 
 \begin{ex}We have~$R^0 F(X) \cong F(X)$, naturally in~$X$. To verify this, pick
@@ -665,7 +681,7 @@ be found.
 
 \begin{ex}Assume~$F$ to even be exact. Then the higher derived functors of~$F$
 vanish, \ie~$R^n F(X) = 0$ for all objects~$X$ and~$n > 0$. To verify this, use
-Lemma~\ref{lemma:exact-functor-acyclic}.\end{ex}
+that exact functors commute with cohomology.\end{ex}
 
 This suggests the following motto: \emph{Derived functors measure the
 failure of a functor to be exact.}
