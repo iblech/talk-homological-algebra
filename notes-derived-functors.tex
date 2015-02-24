@@ -772,10 +772,59 @@ only some finiteness conditions:
 \sectionsummary{Definition \textbullet{} lifting problems \textbullet{}
 extensions}
 
-\begin{itemize}
-\item Lifting problems
-\item Extensions (give correspondence in footnote)
-\end{itemize}
+Let~$\A$ be an abelian category with enough injectives and projectives. Then
+one can show that the right-derived functors of the Hom functor coincide in the
+sense that
+\[ R^n(\Hom_\A(X,\placeholder))(Y) \cong R^n(\Hom_\A(\placeholder,Y))(X). \]
+We can thus define~$\Ext^n_\A(X,Y)$ as either object.
+
+The elements of~$\Ext^n(X,Y)$ have a concrete interpretation. Namely, they
+correspond to~\emph{$n$-extensions} of~$Y$ by~$X$, that is exact sequences of
+the form
+\[ 0 \lra Y \lra E_n \lra \cdots \lra E_1 \lra X \lra 0, \]
+up to a certain equivalence relation.
+
+\begin{prop}There is a natural bijective correspondence between elements
+of~$\Ext^1(X,Y)$ and equivalence classes of short exact sequences~$0 \to Y
+\to E \to X \to 0$.\end{prop}
+\begin{proof}Let~$0 \to Y \to E \to X \to 0$ be a short exact sequence.
+Applying the functor~$\Hom_\A(X,\placeholder)$, we obtain the long exact
+sequence
+\[ 0 \to \Hom(X,Y) \to \Hom(X,E) \to \Hom(X,X) \stackrel{\partial}{\to}
+\Ext^1(X,Y) \to \cdots. \]
+The element of~$\Ext^1(X,Y)$ corresponding to the short exact sequence is
+then~$\partial(\id_X)$.
+
+The converse direction is a bit more complicated.\footnote{Let~$\alpha \in
+\Ext^1(X,Y)$. Embed~$Y$ into an injective object~$I$. The long exact sequence
+induced by the short exact sequence~$0 \to Y \to I \to I/Y \to 0$ shows that
+the map~$\partial : \Hom(X,I/Y) \to \Ext^1(X,Y)$ is surjective. Therefore there
+exists a morphism~$f : X \to I/Y$ such that~$\partial(f) = \alpha$. The short
+exact sequence corresponding to~$\alpha$ is then~$0 \to Y \to E \to X \to 0$,
+where~$E \to X$ is the pullback of~$I \to I/Y$ along~$f$.}
+\end{proof}
+
+Under this correspondence, the trivial short exact sequence~$0 \to Y \to Y
+\oplus X \to X \to 0$ corresponds to the zero element in~$\Ext^1(X,Y)$. Thus a
+short exact sequence splits if and only if its Ext class vanishes.
+
+Here is a fun application of~$\Ext^1$. Let~$i : U \hookrightarrow X$ be a
+subobject. Let~$f : U \to Y$ be a morphism. Is there an extension of~$f$
+to~$X$, \ie a morphism~$\bar f : X \to Y$ such that~$\bar f \circ i = f$?
+Such a question is of course trivial in the category of vector spaces over a
+field, since there we can just extend a basis of~$U$ to a basis of~$X$ and
+construct~$\bar f$ on this basis. But in general abelian categories, the
+question is non-trivial.
+
+We can give a precise answer to the question using the Ext functor. Applying
+the functor~$\Hom(\placeholder,Y)$ to the short exact sequence~$0 \to U \to X
+\to X/U \to 0$, we obtain the long exact sequence
+\[ 0 \to \Hom(X/U,Y) \to \Hom(X,Y) \to \Hom(U,Y) \stackrel{\partial}{\to}
+\Ext^1(X/U,Y) \to \cdots. \]
+The map~$\Hom(X,Y) \to \Hom(U,Y)$ is given by precomposing with~$i : U \to X$.
+Therefore the morphism~$f$ lifts to~$X$ if and only if it has a preimage under
+this map; by exactness, this is the case if and only if~$\partial(f)$ vanishes
+in~$\Ext^1(X/U,Y)$.
 
 \section{Example: Sheaf cohomology}
 \sectionsummary{Definition \textbullet{} comparison with singular cohomology
