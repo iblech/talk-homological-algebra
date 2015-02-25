@@ -869,13 +869,109 @@ in~$\Ext^1(X/U,Y)$.
 \end{itemize}
 
 \section{Outlook}
-\sectionsummary{Unbounded complexes \textbullet{} derived categories
+\sectionsummary{Derived categories
 \textbullet{} model categories}
 
+The \emph{derived category}~$D(\A)$ of an abelian category~$\A$ is the
+\emph{localization} of the category~$\Kom(\A)$ of complexes \emph{at the class
+of quasi-isomorphisms}. Explicitly, its objects are simply the objects
+of~$\Kom(\A)$. For any morphism in~$\Kom(\A)$, there is a corresponding
+morphism in~$D(\A)$; but additionally, we adjoin a formal inverse for any
+quasi-isomorphism in~$\Kom(\A)$. Morphisms in~$D(\A)$ are therefore formal
+``zigzags''~$K^\bullet \to Z_0^\bullet \leftarrow
+Z_1^\bullet \to Z_2^\bullet \leftarrow \cdots \to Z_n^\bullet \leftarrow
+Y^\bullet$ consisting of honest morphisms from~$\Kom(\A)$ and formal inverses
+to quasi-isomorphisms.
+
+\begin{rem}Many important categories can be obtained as localizations. For
+instance, the category of complete metric spaces is the localization of the
+category of all metric spaces at the class of bilipschitz maps with dense
+image. The category of sheaves on a topological space~$X$ is the localization
+of the category of presheaves on~$X$ at the class of stalkwise isomorphisms.
+The category of germs of spaces is the localization of the category of pointed
+spaces at the class of maps which restrict to isomorphisms in neighbourhoods of
+the base points.\end{rem}
+
+We already discussed the motto of replacing objects by resolutions. This motto
+can be rigorously formalized in derived categories: If~$0 \to X \to I^\bullet$
+is a resolution (injective or otherwise), the morphism~$X[0] \to I^\bullet$ is
+a quasi-isomorphism and therefore an isomorphism in~$D(\A)$.
+
+Let~$F : \A \to \B$ be a left-exact functor. Recall that the complex~$\RR F(X)$
+is well-defined up to quasi-isomorphism. Considered as an object of~$D(\B)$, it
+is therefore well-defined up to isomorphism; thus~$\RR F$ can be understood as
+a functor~$D(\A) \to D(\B)$.\footnote{This is not quite correct. In
+general,~$\RR F$ is only well-defined as a functor~$D^+(\A) \to D^+(\B)$,
+where~$D^+(\A)$ is the localization of the category of \emph{bounded below}
+chain complexes at the quasi-isomorphisms. We ignore such boundedness issues.}
+\emph{Derived categories are thus the natural source and target of total derived
+functors.}
+
+The main advantage of the derived category setting is that, unlike with the
+classical approach, we forget only so much information as strictly needed.
+In particular, we retain the information about the \emph{complex}~$\RR F(X)$ as
+opposed to only the cohomology groups~$R^n F(X)$. A concrete benefit of this is
+that there is an easy formula for the composition of derived functors.
+
+\begin{prop}Let~$F : \A \to \B$ and~$G : \B \to \C$ be left-derived functors.
+Assume that a certain homological compatibility assumption is satisfied.
+Then~$\RR G \circ \RR F \cong \RR (G \circ F)$.\end{prop}
+
+This formula generalizes to the composition of more than two functors.
+Explicitly, to calculate~$\RR (G \circ F)(X)$, we can first pick a suitable
+resolution~$0 \to X \to I^\bullet$, apply~$F$ to obtain~$\RR F(X) =
+F(I^\bullet)$, pick a resolution of that, \ie a quasi-isomorphism~$F(I^\bullet)
+\to J^\bullet$, and finally apply~$G$ to obtain~$\RR (G \circ F)(X) \cong
+G(J^\bullet)$.\footnote{We could also try to find a resolution~$0 \to X \to
+I^\bullet$ such that the objects~$F(I^n)$ are~$G$-acyclic. Then it's not
+necessary to resolve~$F(I^\bullet)$.}
+
+Summarizing, the information contained in the \emph{complex}~$\RR F(X)$ is
+sufficient to determine~$\RR (G \circ F)(X)$. In contrast, for the classical
+right-derived functors, there is only the \emph{Grothendieck spectral sequence}
+\[ E_2^{pq} = R^p G(R^q F(X)) \Longrightarrow R^n (G \circ F)(X). \]
+The objects contained in the~$E_2$-page are of course not enough to uniquely
+determine the limit; one needs the differentials and the higher pages. Thus the
+cohomology of~$\RR F(X)$ doesn't suffice to uniquely determine the
+cohomology of~$\RR (G \circ F)(X)$.
+
+\begin{center}\emph{Complexes good, cohomology bad.}\end{center}
+
+Besides its use as a great technical tool for dealing with derived functors,
+derived categories are also interesting on their own. For a ring~$A$ or a
+scheme~$X$, the derived category of modules on~$A$ and the derived category of
+sheaves of modules on~$X$ is a valuable invariant which appears to sit just
+right on the spectrum between ``extremely valuable, but not computable'' and
+``easily computable, but not very interesting''.
+
+There are some relations between rings and schemes which can only be expressed
+on a derived level. For example, the polynomial ring~$k[x_1,\ldots,x_n]$ and
+the exterior algebra over~$k^n$ are not at all isomorphic. However, their
+associated derived categories \emph{are} equivalent. This instance of \emph{Koszul
+duality} has even practical implications, in that certain algorithms dealing
+with the polynomial ring (which is infinite dimensional over~$k$) can be
+massively sped up by transporting them along the equivalence to work with the
+exterior algebra instead (which is finite dimensional over~$k$).\footnote{See
+articles by Mohamed Barakat for details.}
+
+In geometry, there are are important examples of schemes which ``should'' be
+the same in some sense but are not isomorphic. In this case, their relation is
+sometimes captured by a \emph{derived equivalence}, \ie an equivalence between
+the associated derived categories of sheaves of modules. This is, for instance,
+the case for the orbifold~$X^n/\!\!/S_n$ of unordered~$n$-tuples of points on a
+surface~$X$ and the Hilbert scheme~$X^{[n]}$ of~$n$ points on~$X$. Their
+derived categories of sheaves of modules are equivalent.
+
+\begin{rem}Despite their applications, derived categories do have several
+problems. One is that they ``don't glue very well'': Denote by~$D(X)$ the
+derived category of sheaves on a scheme~$X$. Let~$X$ be covered by open
+subsets~$U$ and~$V$. Then it would be nice if~$D(X)$ was a (2-)fiber product
+of~$D(U)$ and~$D(V)$ over~$D(U \cap V)$. However, this is not the case. A way
+to fix these problems is to turn to \emph{enriched derived categories}.
+\end{rem}
+
 \begin{itemize}
-\item Unbounded resolutions
-\item Derived categories: definition, composition of derived functors,
-$D^b(X)$ as an invariant, derived equivalence, $f^!$
+\item Derived categories: $f^!$
 \item Model categories: $\mathrm{sAb} \simeq \mathrm{Kom}^{\leq
 0}(\mathrm{Ab})$
 \end{itemize}
@@ -887,3 +983,4 @@ Give references for derived categories:
 * Derived categories for the working mathematician
 * http://www.maths.ed.ac.uk/~aar/papers/keller.pdf
 * http://webusers.imj-prg.fr/~bernhard.keller/publ/cam.pdf
+* http://www3.nd.edu/~lnicolae/Verdier-ams.pdf
