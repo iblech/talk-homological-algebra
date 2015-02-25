@@ -976,7 +976,22 @@ to fix these problems is to turn to \emph{enriched derived categories}.
 0}(\mathrm{Ab})$
 \end{itemize}
 
-\end{document}
+Finally, we want to mention \emph{model categories}. They are necessary to
+extend the theory to non-abelian situations. For instance, let~$f : X \to Y$
+and~$g : Y \to Z$ be morphisms of schemes. Then there is an exact sequence
+\[ f^* \Omega^1_{Y/Z} \lra \Omega^1_{X/Z} \lra \Omega^1_{X/Y} \lra 0 \]
+relating several sheaves of Kähler differentials. Of course, noticing the
+missing zero at the front, you can hear this sequence screaming ``derive me!''.
+
+This phenomenon is already visible on the level of affine schemes: Let~$A \to B
+\to C$ be a sequence of rings. Then there is an exact sequence
+\[ \Omega^1_{B/A} \otimes_B C \lra \Omega^1_{C/A} \lra \Omega^1_{C/B} \lra 0.
+\]
+Unfortunately, the functor associating to an algebra its module of Kähler
+differentials can't be derived with the techniques described in these notes,
+since its source category is not abelian. Check out A.~Raksit,
+\href{http://www.arponr.com/files/quillen-cotangent.pdf}{\emph{Defining the
+cotangent complex}}.
 
 Give references for derived categories:
 * https://math.berkeley.edu/~mhaiman/math256-fall13-spring14/cohomology-1_derived-cat.pdf
