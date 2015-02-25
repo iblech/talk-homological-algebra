@@ -136,6 +136,7 @@
 \title{A quickstart guide to derived functors}
 \author{Ingo Blechschmidt}
 \email{iblech@web.de}
+%\date{\today}
 
 \DeclareRobustCommand{\SkipTocEntry}[5]{}
 
@@ -144,7 +145,9 @@
 \begin{abstract}These notes give an informal exposition of the basic
 theory on derived functors. They are aimed at students who have seen~$\Ext$
 or~$\Tor$ appearing once or twice and want to know more about those derived
-functors. No prior knowledge of homological algebra is assumed. However, one
+functors. We conclude with a short outlook on the modern formalism of
+derived categories.
+No prior knowledge of homological algebra is assumed. However, one
 should be familiar with exact sequences and chain complexes, as
 for instance provided by a first course on algebraic topology.
 \end{abstract}
@@ -162,15 +165,15 @@ instance, categories of modules). Let~$0 \to X \to Y \to Z \to 0$ be a short
 exact sequence in~$\A$. Then the induced sequence~$0 \to FX \to FY \to FZ$ is
 only exact at the first two terms, the morphism~$FY \to FZ$ may fail to be an
 epimorphism. It is therefore a natural question how to extend this sequence on the
-right to obtain an exact sequence. One could, of course, simply tack the
+right to obtain an exact sequence. We could, of course, simply tack the
 cokernel of~$FY \to FZ$ at the end; but there is a better way, given by the
 \emph{right-derived functors} of~$F$: There is a long exact sequence
 \[ 0 \to F(X) \to F(Y) \to F(Z) \to R^1F(X) \to R^1F(Y) \to R^1F(Z) \to
 R^2F(X) \to \cdots \]
 depending functorially on the given short exact sequence. Note that this way,
 only the map~$F(Z) \to R^1F(X)$, but not the object~$R^1 F(X)$, depends on~$Y$ and~$Z$.
-To construct~$R^n F(X)$, one picks an \emph{injective resolution}~$0 \to X \to
-I^\bullet$ of~$X$ and sets~$R^n F(X) \defeq H^n(F(I^\bullet))$.
+To construct~$R^n F(X)$, we pick an \emph{injective resolution}~$0 \to X \to
+I^\bullet$ of~$X$ and set~$R^n F(X) \defeq H^n(F(I^\bullet))$.
 
 \vfill
 \normalsize
@@ -609,7 +612,7 @@ information about morphisms is lost in this process, since morphisms between
 objects lift to morphisms between resolutions.
 
 For future reference, we want to precisely state the relation between an
-object~$X$ -- considered as a complex~$X[0]$ concentrated in degree zero -- and
+object~$X$, considered as a complex~$X[0]$ concentrated in degree zero, and
 an associated injective resolution~$I^\bullet$. Namely, the augmentation~$X \to
 I^0$ gives rise to a morphism~$X[0] \to I^\bullet$ of complexes which is
 a \emph{quasi-isomorphism} by the following definition.
@@ -637,7 +640,7 @@ guarantee that the isomorphisms are induced by a (zigzag of) morphisms of
 complexes.}
 
 \section{Derived functors}
-\sectionsummary{Definition \textbullet{} well-definedness \textbullet{} examples
+\sectionsummary{Definition \textbullet{} indeterminacy \textbullet{} examples
 \textbullet{} long exact sequence \textbullet{} uses}
 
 \begin{defn}Let~$F : \A \to \B$ be a left-exact functor between abelian
@@ -935,7 +938,7 @@ determine the limit; one needs the differentials and the higher pages. Thus the
 cohomology of~$\RR F(X)$ doesn't suffice to uniquely determine the
 cohomology of~$\RR (G \circ F)(X)$.
 
-\begin{center}\emph{Complexes good, cohomology bad.}\end{center}
+\begin{center}\emph{$\bigstar$ Complexes good, cohomology bad. $\bigstar$}\end{center}
 
 Besides its use as a great technical tool for dealing with derived functors,
 derived categories are also interesting on their own. For a ring~$A$ or a
@@ -970,10 +973,24 @@ of~$D(U)$ and~$D(V)$ over~$D(U \cap V)$. However, this is not the case. A way
 to fix these problems is to turn to \emph{enriched derived categories}.
 \end{rem}
 
+There are a number of fine expository articles on derived categories. The reader is
+warmly encouraged to study them.
 \begin{itemize}
-\item Derived categories: $f^!$
-\item Model categories: $\mathrm{sAb} \simeq \mathrm{Kom}^{\leq
-0}(\mathrm{Ab})$
+\item R. P. Thomas. \href{http://arxiv.org/abs/math/0001045}{\emph{Derived
+categories for the working mathematician}}. (Start here.)
+\item M. Haiman.
+\href{https://math.berkeley.edu/~mhaiman/math256-fall13-spring14/cohomology-1_derived-cat.pdf}{\emph{Notes
+on derived categories and derived functors}}.
+\item B. Keller.
+\href{http://www.maths.ed.ac.uk/~aar/papers/keller.pdf}{\emph{Derived
+categories and their uses}}.
+\item B. Keller.
+\href{http://webusers.imj-prg.fr/~bernhard.keller/publ/cam.pdf}{\emph{Introduction
+to abelian and derived categories}}.
+\item L. Nicolaescu.
+\href{http://www3.nd.edu/~lnicolae/Verdier-ams.pdf}{\emph{The derived
+categories of sheaves and the Poincaré--Verdier duality}}. (With an emphasis on
+duality theory.)
 \end{itemize}
 
 Finally, we want to mention \emph{model categories}. They are necessary to
@@ -993,9 +1010,4 @@ since its source category is not abelian. Check out A.~Raksit,
 \href{http://www.arponr.com/files/quillen-cotangent.pdf}{\emph{Defining the
 cotangent complex}}.
 
-Give references for derived categories:
-* https://math.berkeley.edu/~mhaiman/math256-fall13-spring14/cohomology-1_derived-cat.pdf
-* Derived categories for the working mathematician
-* http://www.maths.ed.ac.uk/~aar/papers/keller.pdf
-* http://webusers.imj-prg.fr/~bernhard.keller/publ/cam.pdf
-* http://www3.nd.edu/~lnicolae/Verdier-ams.pdf
+\end{document}
