@@ -59,12 +59,14 @@
 \renewcommand{\P}{\mathcal{P}}
 \newcommand{\R}{\mathcal{R}}
 \newcommand{\I}{\mathcal{I}}
+\newcommand{\J}{\mathcal{J}}
 \renewcommand{\S}{\mathcal{S}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\LL}{\mathbb{L}}
 \newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\GG}{\mathbb{G}}
+\newcommand{\PP}{\mathbb{P}}
 \newcommand{\aaa}{\mathfrak{a}}
 \newcommand{\ppp}{\mathfrak{p}}
 \newcommand{\mmm}{\mathfrak{m}}
@@ -124,6 +126,7 @@
 \newcommand{\inv}{inv.\@}
 \newcommand{\notnot}{\emph{not not}\xspace}
 \newcommand{\dd}{{\vee\!\!\!\vee}}
+\newcommand{\ip}{\cdot}
 
 \newcommand{\XXX}[1]{\textbf{XXX: #1}}
 
@@ -859,17 +862,83 @@ Therefore the morphism~$f$ lifts to~$X$ if and only if it has a preimage under
 this map; by exactness, this is the case if and only if~$\partial(f)$ vanishes
 in~$\Ext^1(X/U,Y)$.
 
-\section{Example: Sheaf cohomology}
-\sectionsummary{Definition \textbullet{} comparison with singular cohomology
-\textbullet{} uses}
+\section{Example: Tor}
+\sectionsummary{Definition \textbullet{} Serre intersection formula}
 
-\begin{itemize}
-\item Resolution of $\underline{\RR}$
-\item Comparison with singular cohomology
-\item Paucity of projective sheaves
-\item Example: section-wise surjectivity
-\item Uninteresting: $\C^\infty$-modules
-\end{itemize}
+Let~$A$ be a ring (commutative, with unit). Tensoring with a fixed module
+defines a right-exact functor~$\Mod(A) \to \Mod(A)$. Since one can show that
+\[ L^n (M \otimes_A \placeholder)(N) \cong L^n (\placeholder \otimes_A N)(M),
+\]
+we can use both to define~$\Tor_n^A(M,N)$.
+
+Here is a fun example from algebraic geometry. Let~$I$ and~$J$ be ideals of~$A
+\defeq k[x,y]$. These define closed subschemes~$V(I)$ and~$V(J)$
+of~$\AA^2_k$, the vanishing locus of the polynomials in~$I$ respectively~$J$.
+The ring of functions is~$A/I$ and~$A/J$ respectively. The scheme-theoretical
+intersection is given by~$V(I + J)$ with ring of functions~$A/(I + J) \cong A/I
+\otimes_A A/J$.
+
+We can then define the \emph{intersection multiplicity} of~$V(I)$ and~$V(J)$ at
+a point~$x \in \AA^2_k$ (corresponding to a prime ideal~$\ppp$) as the
+dimension of the stalk~$(A/(I+J))_\ppp$ as a~$k$-vector space.
+
+\begin{ex}Let~$I = (y-x^2)$ and~$J = (y)$ be ideals in~$k[x,y]$ defining
+the parabola and the~$x$-axis, respectively. The ring of functions of~$V(I +
+J)$ is
+\[ k[x,y]/(I + J) = k[x,y]/(y-x^2,y) \cong k[x]/(x^2). \]
+Since any elements not contained in the ideal~$(x,y) = (x)$ of this ring are
+invertible, localizing this ring at~$(x,y)$ doesn't change it. Thus the
+intersection multiplicity of~$V(I)$ and~$V(J)$ at the
+the origin (corresponding to the prime ideal~$(x,y))$ is~$2$, just as we would
+expect.\end{ex}
+
+We can globalize the definition. Let~$\I$ and~$\J$ be sheaves of ideals on a
+scheme~$X$ over a field~$k$ of dimension~$2$, defining closed
+subschemes~$V(\I)$ and~$V(\J)$.  Their scheme-theoretical intersection is~$V(\I
++ \J)$ with structure sheaf~$\O_X/(\I + \J) \cong \O_X/\I \otimes_{\O_X}
+\O_X/\J$.\footnote{More precisely,~$\O_X/(\I + \J)$ is the pushforward of the
+structure sheaf of~$V(\I + \J)$ along the closed immersion~$V(\I + \J)
+\hookrightarrow X$. As is customary in this context, we will identify sheaves
+on closed subspaces with their pushforward to the ambient scheme.} If~$V(\I)$
+and~$V(\J)$ are ``in general position'' and intersect in a finite number of
+points, we can define their \emph{intersection product} as the number
+\[ V(\I) \ip V(\J) \defeq \sum_{x \in V(\I) \cap V(\J)}
+  \dim_k\, (\O_X/\I \otimes_{\O_X} \O_X/\J)_x. \]
+However, this definition can't be used to calculate non-proper intersections
+like $V(\I) \ip V(\I)$. This should be defined in a way that if we can
+move~$V(\I)$ to a ``linearly equivalent divisor''~$V(\I')$, then~$V(\I) \ip
+V(\I) \defeq V(\I) \ip V(\I')$. For instance, any two lines in~$\PP^2_k$ should
+have intersection product~$1$, even if we intersect a line with itself.
+
+The correct definition is given by \emph{Serre's intersection formula}
+\[ V(\I) \ip V(\J) \defeq \chi(\O_X/\I \otimes^\LL_{\O_X} \O_X/\J) \defeq
+  \sum_{n=0}^\infty (-1)^n \chi(\Tor_n^{\O_X}(\O_X/\I,\O_X/\J)), \]
+where the \emph{Euler characteristic} of a coherent sheaf~$\E$ is defined
+using sheaf cohomology as~$\chi(\E) \defeq \sum_{i=0}^\infty (-1)^i \dim_k
+H^i(X, \E)$. The Tor is calculated in the category of coherent sheaves on~$X$.
+
+In the case that~$V(\I)$ and~$V(\J)$ happen to be in general position, one can
+show that the higher Tor sheaves vanish. Furthermore, the sheaf~$\O_X/\I
+\otimes \O_X/\J$, \ie the~$0$-th Tor sheaf, is supported precisely at the intersection
+points; thus the dimension of~$H^0(X, \O_X/\I \otimes \O_X/\J)$ is given by the
+sum of the dimensions of the stalks and the higher cohomology groups vanish.
+Therefore Serre's intersection formula recovers the naive definition in this
+case.
+
+For a very readable account of this topic, see Manins \emph{Lectures on the
+$K$-functor in algebraic geometry}.
+
+%\section{Example: Sheaf cohomology}
+%\sectionsummary{Definition \textbullet{} comparison with singular cohomology
+%\textbullet{} uses}
+%
+%\begin{itemize}
+%\item Resolution of $\underline{\RR}$
+%\item Comparison with singular cohomology
+%\item Paucity of projective sheaves
+%\item Example: section-wise surjectivity
+%\item Uninteresting: $\C^\infty$-modules
+%\end{itemize}
 
 \section{Outlook}
 \sectionsummary{Derived categories
