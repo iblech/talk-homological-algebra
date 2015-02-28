@@ -380,8 +380,8 @@ of~$R$-modules is as follows: \\
   \text{projective} \ar@/^1pc/@{=>}[r] \ar@/^1pc/@{==>}[l]^{\text{$R$ local
   or $R$ PID}} &
   \text{flat} \ar@/^1pc/@{=>}[r] \ar@/^1pc/@{==>}[l]^{\text{$R$ perfect}} &
-  \text{torsionfree} \ar@/^1pc/@{==>}[l]^{\text{$R$ Dedekind domain}}
-} \]}\end{ex}
+  \text{torsionfree} \ar@/^1pc/@{==>}[l]^{\text{$R$ Dedekind or Prüfer domain}}
+} \]\vspace{-1.6em}}\end{ex}
 
 \begin{ex}Assuming the axiom of choice, any vector space is free and thus
 projective.\end{ex}
@@ -500,8 +500,8 @@ regular in~$A$, $f_2$ is regular in~$A/(f_1)$, $f_3$ is regular
 in~$A/(f_1,f_2)$ and so on. A ring element~$s$ is \emph{regular} if and only if
 multiplication by~$s$ is injective. If~$A$ is a ring of functions, for
 instance~$A = k[x,y]$, regularity of the sequence is intuitively a requirement on the
-equations~``$f_1=0,\ldots,f_n=0$'' to be independent.} Denote by~$\Lambda^n M$
-the~$n$-th exterior power of~$M$. Then~$\Lambda^\bullet A^r \to
+equations~``$f_1=0,\ldots,f_n=0$'' to be independent.} Denote by~$\Lambda^n A^r$
+the~$n$-th exterior power of~$A^r$. Then~$\Lambda^\bullet A^r \to
 A/(f_1,\ldots,f_r) \to 0$ is a free resolution. The
 differential sends~$\vec v_1 \wedge \cdots \wedge \vec v_n$ to~$\sum_{i=0}^r
 (-1)^i (\vec v \cdot \vec f)\, \vec v_1 \wedge \cdots \wedge \widehat{\vec v_i}
@@ -548,6 +548,11 @@ object. Dually, an abelian category has \emph{enough
 projectives} if and only if any object is a quotient of a projective
 object.\end{defn}
 
+\begin{ex}Assuming the axiom of choice, the category of modules over a ring has
+enough injectives and enough projectives. The category of sheaves of abelian
+groups on a topological space always has enough injectives, but lacks enough
+projectives in general.\end{ex}
+
 \begin{lemma}Let~$\A$ be an abelian category with enough injectives or enough
 projectives. Then any object possesses an injective respectively a projective
 resolution.\end{lemma}
@@ -558,7 +563,7 @@ enough projectives. The statement about injective resolutions is the formal
 dual.\end{proof}
 
 \begin{rem}Let~$\A$ be an abelian category with enough injectives and
-projectives. We say that its \emph{homological dimension}~$\leq n$ if and only
+projectives. We say that its \emph{homological dimension} is~$\leq n$ if and only
 if any object possesses a projective (equivalently, injective) resolution of
 length~$n$, \ie comprising objects~$P^0$ to~$P^{-n}$.\footnote{The equivalence
 is not entirely trivial. One can use the \emph{dimension shifting trick}
@@ -658,12 +663,10 @@ $R^n F(X) \defeq H^n(\RR F(X)) = H^n(F(I^\bullet))$.
 \end{defn}
 
 So, to calculate~$R^n F(X)$, we take an injective resolution of~$X$, apply~$F$
-to this complex (be sure to strip the leading~``$F(X)$''), and then take
+to this complex (making sure to strip the leading~``$F(X)$''), and then take
 cohomology. Note that, even though the complex~$I^\bullet$ is not acyclic only
 at position zero, the complex~$F(I^\bullet)$ may have cohomology in arbitrary
-high degrees~(!). There is an analogous definition for the left-derived
-functors of right-exact functors, using projective instead of injective
-resolutions.
+high degrees~(!).
 
 Since we made the arbitrary choice of an injective resolution, we have to
 discuss well-definedness of course. If~$0 \to X \to J^\bullet$ is a second
@@ -686,6 +689,9 @@ therefore a well-defined morphism~$R^n F(X) \to R^n F(Y)$.
 
 Different choices of resolutions lead to naturally isomorphic derived
 functors.
+There is an analogous definition for the left-derived
+functors of right-exact functors, using projective instead of injective
+resolutions.
 
 \begin{ex}We have~$R^0 F(X) \cong F(X)$, naturally in~$X$. To verify this, pick
 an injective resolution~$0 \to X \to I^\bullet$ and apply~$F$ to
@@ -798,11 +804,6 @@ For the derived functors, the formula holds in complete generality, assuming
 only some finiteness conditions:
 \[ \RR\pi_*(\E^\bullet) \otimes^\LL \F^\bullet \simeq_\text{qis}
 \RR\pi_*(\E^\bullet \otimes^\LL \LL\pi^*\G^\bullet). \]
-
-
-\begin{itemize}
-\item somewhere: ``complexes good, cohomology bad'', example from homotopy theory
-\end{itemize}
 
 \section{Example: Ext}
 \sectionsummary{Definition \textbullet{} lifting problems \textbullet{}
