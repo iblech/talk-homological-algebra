@@ -904,8 +904,18 @@ and~$V(\J)$ are ``in general position'' and intersect in a finite number of
 points, we can define their \emph{intersection product} as the number
 \[ V(\I) \ip V(\J) \defeq \sum_{x \in V(\I) \cap V(\J)}
   \dim_k\, (\O_X/\I \otimes_{\O_X} \O_X/\J)_x. \]
+Since the tensor product sheaf~$\O_X/\I \otimes_{\O_X} \O_X/\J$ is supported
+precisely at the intersection points, this can also be stated more abstractly
+using sheaf cohomology as
+\[ V(\I) \ip V(\J) = \dim_k H^0(X, \O_X/\I \otimes_{\O_X} \O_X/\J) =
+\chi(\O_X/\I \otimes_{\O_X} \O_X/\J). \]
+Since discrete points don't have higher cohomology, the \emph{Euler
+characteristic} appearing in this formula, defined as~$\chi(\E) \defeq
+\sum_{i=0}^\infty (-1)^i \dim_k H^i(X, \E)$, is simply given by the first
+summand.
+
 However, this definition can't be used to calculate non-proper intersections
-like $V(\I) \ip V(\I)$. This should be defined in a way that if we can
+like $V(\I) \ip V(\I)$. In this case, the intersection number should be defined in a way that if we can
 move~$V(\I)$ to a ``linearly equivalent divisor''~$V(\I')$, then~$V(\I) \ip
 V(\I) \defeq V(\I) \ip V(\I')$. For instance, any two lines in~$\PP^2_k$ should
 have intersection product~$1$, even if we intersect a line with itself.
@@ -913,19 +923,12 @@ have intersection product~$1$, even if we intersect a line with itself.
 The correct definition is given by \emph{Serre's intersection formula}
 \[ V(\I) \ip V(\J) \defeq \chi(\O_X/\I \otimes^\LL_{\O_X} \O_X/\J) \defeq
   \sum_{n=0}^\infty (-1)^n \chi(\Tor_n^{\O_X}(\O_X/\I,\O_X/\J)), \]
-where the \emph{Euler characteristic} of a coherent sheaf~$\E$ is defined
-using sheaf cohomology as~$\chi(\E) \defeq \sum_{i=0}^\infty (-1)^i \dim_k
-H^i(X, \E)$. The Tor is calculated in the category of coherent sheaves on~$X$.
+It is a refinement of the naive definition, which is the~$n = 0$ term in the
+sum. In the case that~$V(\I)$ and~$V(\J)$ happen to be in general position, one can
+show that the higher Tor sheaves vanish. Therefore Serre's intersection formula
+recovers the naive definition in this case.
 
-In the case that~$V(\I)$ and~$V(\J)$ happen to be in general position, one can
-show that the higher Tor sheaves vanish. Furthermore, the sheaf~$\O_X/\I
-\otimes \O_X/\J$, \ie the~$0$-th Tor sheaf, is supported precisely at the intersection
-points; thus the dimension of~$H^0(X, \O_X/\I \otimes \O_X/\J)$ is given by the
-sum of the dimensions of the stalks and the higher cohomology groups vanish.
-Therefore Serre's intersection formula recovers the naive definition in this
-case.
-
-For a very readable account of this topic, see Manins \emph{Lectures on the
+For a very readable account of this topic, see Manin's \emph{Lectures on the
 $K$-functor in algebraic geometry}.
 
 %\section{Example: Sheaf cohomology}
