@@ -1,0 +1,106 @@
+\documentclass[12pt]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{etex}
+\usepackage{amsmath,amsthm,amssymb,color}
+\usepackage{mathtools}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{hyperref}
+\usepackage[all]{xy}
+
+\usepackage[T1]{fontenc}
+\usepackage{libertine}
+\linespread{1.05}
+
+\theoremstyle{definition}
+\newtheorem*{defn}{Definition}
+
+\theoremstyle{plain}
+\newtheorem*{prop}{Proposition}
+\newtheorem*{cor}{Korollar}
+\newtheorem*{lemma}{Lemma}
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Bemerkung}
+
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\defequiv}{\vcentcolon\equiv}
+\newcommand{\seq}[1]{\mathrel{\vdash\!\!\!_{#1}}}
+
+\newcommand{\aaa}{\mathfrak{a}}
+\newcommand{\Hom}{\mathrm{Hom}}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\enlargethispage{4em}
+
+\begin{center}\huge\textbf{\textsf{Vektorbündel auf affinen Schemata}}\end{center}
+\bigskip
+
+\begin{lemma}Sei~$A$ ein lokaler Ring. Sei~$\aaa$ ein endlich erzeugtes
+idempotentes Ideal in~$A$. Dann ist~$\aaa = (0)$ oder~$\aaa = (1)$.\end{lemma}
+
+\begin{proof}Wir können~$\aaa$ als endlich erzeugten~$A$-Modul ansehen. Dann
+gibt es nach dem Lemma von Nakayama ein Element~$x \in A$ mit~$x \equiv 1$
+modulo~$\aaa$ und~$x \aaa = 0$. Da~$A$ lokal ist, ist~$x$ invertierbar
+oder~$1-x$ invertierbar. Im ersten Fall ist~$\aaa = (0)$, im zweiten~$\aaa =
+(1)$.\end{proof}
+
+\begin{lemma}Sei~$A$ ein lokaler Ring. Sei~$P$ eine idempotente Matrix
+über~$A$. Dann ist~$P$ äquivalent zu einer Diagonalmatrix mit Einträgen~$1$
+und~$0$.\end{lemma}
+
+\begin{proof}Da~$P$ idempotent ist, sind auch die Ideale~$(\Lambda^i P)$
+der~$i$-Minoren idempotent. Nach dem vorherigen Lemma sind sie daher jeweils
+Null oder Eins. Da sie eine absteigende Kette bilden, gibt es somit eine
+Zahl~$r$, sodass~$(\Lambda^r P) = (1)$ und~$(\Lambda^{r+1} P) = (0)$. Also sind
+alle~$(r+1)$-Minoren von~$P$ Null, und -- da~$A$ lokal ist -- gibt es
+mindestens einen invertierbaren~$r$-Minor. Somit lässt sich~$P$ durch Zeilen-
+und Spaltentransformationen auf eine Diagonalmatrix der gewünschten Art
+bringen. \end{proof}
+
+\begin{rem}Man kann sogar zeigen, dass~$P$ \emph{ähnlich} zu einer
+Diagonalmatrix dieser Art ist. Denn mit dem Lemma ist klar, dass Bild und Kern
+von~$P$ frei von endlichem Rang sind. Kombiniert man Basen von Bild und Kern,
+so erhält man eine Basis des vollen Spaltenraums, bezüglich der die
+entsprechend transformierte Matrix eine Diagonalmatrix der gewünschten Art
+ist.\end{rem}
+
+\begin{prop}Sei~$M$ ein Modul über einem Ring~$A$. Dann ist~$M$ genau dann
+endlich erzeugt und projektiv, wenn es eine Zerlegung~$1 = \sum_i f_i \in A$
+gibt, sodass die lokalisierten Moduln~$M[f_i^{-1}]$ jeweils freie Moduln
+endlichen Rangs sind.\end{prop}
+
+\begin{proof}Sei~$M$ endlich erzeugt und projektiv. Dann gibt es eine lineare
+Surjektion~$p : A^n \to M$ mit Schnitt~$s : M \to A^n$. Die Komposition~$P
+\defeq sp$ ist idempotent, und~$M$ ist isomorph zu~$A^n/\operatorname{ker}(P)$.
+Interpretiert man das vorherige Lemma im kleinen Zariski-Topos
+über~$\operatorname{Spec} A$, sieht man, dass eine Zerlegung der Eins
+existiert, sodass~$P$ über den lokalisierten Ringen jeweils äquivalent zu einer
+Diagonalmatrix mit Einträgen~$1$ und~$0$ ist. Da Lokalisieren exakt ist, ist
+daher~$A^n/\operatorname{ker}(P)$ lokal frei von endlichem Rang.
+
+Sei umgekehrt ein Modul~$M$ gegeben, der lokal frei von endlichem Rang ist.
+Dann ist~$M$ auch global endlich erzeugt. Sei~$A^n \to M$ eine lineare
+Surjektion. Ihr Kern ist lokal endlich erzeugt, da Lokalisieren exakt ist
+und~$M$ lokal endlich präsentiert ist. Damit ist ihr Kern auch global endlich
+erzeugt; folglich ist~$M$ von endlicher Präsentation. Um nun die Projektivität
+von~$M$ nachzuweisen, sei eine lineare Surjektion~$X \to Y$ gegeben. Es ist zu
+zeigen, dass die induzierte Abbildung~$\Hom_A(M,X) \to \Hom_A(M,Y)$ ebenfalls
+surjektiv ist. Da~$M$ lokal projektiv ist, und~$\Hom_A(M,\cdot)$ aufgrund der
+endlichen Präsentation von~$M$ mit Lokalisieren vertauscht, ist diese Abbildung
+lokal surjektiv und somit surjektiv.
+\end{proof}
+
+\begin{cor}Sei~$M$ ein Modul über einem Ring~$A$. Dann ist die induzierte
+quasikohärente Modulgarbe~$M^\sim$ genau dann ein Vektorbündel, wenn~$M$
+endlich erzeugt und projektiv ist.\end{cor}
+
+%\begin{proof}Wegen der Äquivalenz zwischen quasikohärenten Modulgarben auf
+%affinen Schemata und gewöhnlichen Moduln auf Ringen ist die Modulgarbe~$M^\sim$
+%genau dann ein Vektorbündel, also lokal frei von endlichem Rang, wenn~$M$ lokal
+%frei von endlichem Rang ist.\end{proof}
+
+\end{document}
