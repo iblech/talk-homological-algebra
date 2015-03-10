@@ -48,10 +48,12 @@ oder~$1-x$ invertierbar. Im ersten Fall ist~$\aaa = (0)$, im zweiten~$\aaa =
 und~$0$.\end{lemma}
 
 \begin{proof}Da~$P$ idempotent ist, sind auch die Ideale~$(\Lambda^i P)$
-der~$i$-Minoren idempotent. Nach dem vorherigen Lemma sind sie daher jeweils
+der~$i$-Minoren idempotent: $(\Lambda^i P) = (\Lambda^i (P \circ P)) =
+(\Lambda^i P \circ \Lambda^i P) \subseteq (\Lambda^i P) \cdot (\Lambda^i P)
+\subseteq (\Lambda^i P)$. Nach dem vorherigen Lemma sind sie daher jeweils
 Null oder Eins. Da sie eine absteigende Kette bilden, gibt es somit eine
 Zahl~$r$, sodass~$(\Lambda^r P) = (1)$ und~$(\Lambda^{r+1} P) = (0)$. Also sind
-alle~$(r+1)$-Minoren von~$P$ Null, und -- da~$A$ lokal ist -- gibt es
+alle~$(r+1)$-Minoren von~$P$ Null, und es gibt -- da~$A$ lokal ist --
 mindestens einen invertierbaren~$r$-Minor. Somit lässt sich~$P$ durch Zeilen-
 und Spaltentransformationen auf eine Diagonalmatrix der gewünschten Art
 bringen. \end{proof}
@@ -90,7 +92,7 @@ lokal surjektiv und somit surjektiv.
 \end{proof}
 
 \begin{cor}Sei~$M$ ein Modul über einem Ring~$A$. Die induzierte
-quasikohärente Modulgarbe~$M^\sim$ ist genau dann ein Vektorbündel, wenn~$M$
+quasikohärente Modulgarbe~$M^\sim$ auf~$\operatorname{Spec} A$ ist genau dann ein Vektorbündel, wenn~$M$
 endlich erzeugt und projektiv ist.\end{cor}
 
 %\begin{proof}Wegen der Äquivalenz zwischen quasikohärenten Modulgarben auf
