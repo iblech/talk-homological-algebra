@@ -48,9 +48,9 @@ oder~$1-x$ invertierbar. Im ersten Fall ist~$\aaa = (0)$, im zweiten~$\aaa =
 und~$0$.\end{lemma}
 
 \begin{proof}Da~$P$ idempotent ist, sind auch die Ideale~$(\Lambda^i P)$
-der~$i$-Minoren idempotent: $(\Lambda^i P) = (\Lambda^i (P \circ P)) =
+der~$i$-Minoren idempotent: \[ (\Lambda^i P) = (\Lambda^i (P \circ P)) =
 (\Lambda^i P \circ \Lambda^i P) \subseteq (\Lambda^i P) \cdot (\Lambda^i P)
-\subseteq (\Lambda^i P)$. Nach dem vorherigen Lemma sind sie daher jeweils
+\subseteq (\Lambda^i P). \] Nach dem vorherigen Lemma sind sie daher jeweils
 Null oder Eins. Da sie eine absteigende Kette bilden, gibt es somit eine
 Zahl~$r$, sodass~$(\Lambda^r P) = (1)$ und~$(\Lambda^{r+1} P) = (0)$. Also sind
 alle~$(r+1)$-Minoren von~$P$ Null, und es gibt -- da~$A$ lokal ist --
@@ -65,28 +65,30 @@ so erhält man eine Basis des vollen Spaltenraums, bezüglich der die
 entsprechend transformierte Matrix eine Diagonalmatrix der gewünschten Art
 ist.\end{rem}
 
-\begin{prop}Sei~$M$ ein Modul über einem Ring~$A$. Dann ist~$M$ genau dann
+\begin{prop}Sei~$M$ ein Modul über einem Ring~$A$. Genau dann ist~$M$
 endlich erzeugt und projektiv, wenn es eine Zerlegung~$1 = \sum_i f_i \in A$
 gibt, sodass die lokalisierten Moduln~$M[f_i^{-1}]$ jeweils freie Moduln
 endlichen Rangs sind.\end{prop}
 
 \begin{proof}Sei~$M$ endlich erzeugt und projektiv. Dann gibt es eine lineare
 Surjektion~$p : A^n \to M$ mit Schnitt~$s : M \to A^n$. Die Komposition~$P
-\defeq s \circ p$ ist idempotent, und~$M$ ist isomorph zu~$A^n/\operatorname{ker}(P)$.
+\defeq s \circ p$ ist idempotent und~$M$ ist isomorph zu~$A^n/\operatorname{ker}(P)$.
 Interpretiert man das vorherige Lemma im kleinen Zariski-Topos
 über~$\operatorname{Spec} A$, sieht man, dass eine Zerlegung der Eins
 existiert, sodass~$P$ über den lokalisierten Ringen jeweils äquivalent zu einer
 Diagonalmatrix mit Einträgen~$1$ und~$0$ ist. Da Lokalisieren exakt ist, ist
-daher~$A^n/\operatorname{ker}(P)$ lokal frei von endlichem Rang.
+somit~$A^n/\operatorname{ker}(P)$ lokal frei von endlichem Rang.
 
 Sei umgekehrt ein Modul~$M$ gegeben, der lokal frei von endlichem Rang ist.
 Dann ist~$M$ insbesondere lokal endlich erzeugt und somit auch global endlich erzeugt. Sei~$A^n \to M$ eine lineare
 Surjektion. Ihr Kern ist lokal endlich erzeugt, da Lokalisieren exakt ist
 und~$M$ lokal endlich präsentiert ist. Damit ist ihr Kern auch global endlich
-erzeugt; folglich ist~$M$ endlich präsentiert. Um nun die Projektivität
+erzeugt; folglich ist~$M$ endlich präsentiert.
+
+Um nun die Projektivität
 von~$M$ nachzuweisen, sei eine lineare Surjektion~$X \to Y$ gegeben. Es ist zu
 zeigen, dass die induzierte Abbildung~$\Hom_A(M,X) \to \Hom_A(M,Y)$ ebenfalls
-surjektiv ist. Da~$M$ lokal projektiv ist, und~$\Hom_A(M,\cdot)$ aufgrund der
+surjektiv ist. Da~$M$ lokal projektiv ist und~$\Hom_A(M,\cdot)$ aufgrund der
 endlichen Präsentation von~$M$ mit Lokalisieren vertauscht, ist diese Abbildung
 lokal surjektiv und somit surjektiv.
 \end{proof}
