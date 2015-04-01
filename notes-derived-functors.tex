@@ -238,7 +238,7 @@ the linear map~$\ZZ \to \ZZ,\,x \mapsto 2x$ doesn't have a cokernel in this
 category.\end{non-ex}
 
 \begin{non-ex}The category of Hilbert spaces and the category of Banach spaces
-are not abelian. One can check than in these categories, the categorical image
+are not abelian. One can check that in these categories, the categorical image
 of a continuous linear map is calculated as the \emph{closure} of the
 set-theoretical image. Therefore the homomorphism theorem fails: For instance,
 let~$\iota : U \hookrightarrow X$ be the inclusion of a linear subspace which is
@@ -593,8 +593,8 @@ exists a lift of~$f$ to the resolutions, \ie a morphism~$I^\bullet \to
 J^\bullet$ of complexes compatible with the maps~$X \to I^0$ and~$Y \to J^0$.
 Furthermore, this lift is unique up to homotopy.
 \[ \xymatrix{
-  0 \ar[r] & X \ar[r]\ar[d] & I^0 \ar[r]\ar@{-->}[d] & I^2 \ar[r]\ar@{-->}[d] & \cdots \\
-  0 \ar[r] & Y \ar[r] & J^0 \ar[r] & J^2 \ar[r] & \cdots
+  0 \ar[r] & X \ar[r]\ar[d] & I^0 \ar[r]\ar@{-->}[d] & I^1 \ar[r]\ar@{-->}[d] & \cdots \\
+  0 \ar[r] & Y \ar[r] & J^0 \ar[r] & J^1 \ar[r] & \cdots
 } \]
 \end{lemma}
 \begin{proof}We obtain a morphism~$I^0 \to J^0$ by lifting the morphism~$X \to
@@ -624,6 +624,8 @@ object~$X$, considered as a complex~$X[0]$ concentrated in degree zero, and
 an associated injective resolution~$I^\bullet$. Namely, the augmentation~$X \to
 I^0$ gives rise to a morphism~$X[0] \to I^\bullet$ of complexes which is
 a \emph{quasi-isomorphism} by the following definition.
+
+\newpage
 
 \begin{defn}A morphism of complexes~$K^\bullet \to L^\bullet$ is a
 \emph{quasi-isomorphism} if the induced morphisms~$H^n(K^\bullet) \to
