@@ -216,7 +216,7 @@ is bilinear and:
 \begin{enumerate}
 \item There exists a \emph{zero object}, and for any pair of objects~$X$
 and~$Y$, there exists a \emph{biproduct}~$X \oplus Y$ (simultaneously a
-coproduct and a product).
+coproduct and a product, in a compatible way).
 \item For any morphism~$f : X \to Y$, there exists a \emph{kernel}~$\Kernel(f)
 \hookrightarrow X$ and a \emph{cokernel}~$Y \twoheadrightarrow \Cokernel(f)$.
 \item An appropriate formulation of the homomorphism theorem holds.
@@ -442,14 +442,13 @@ construct a retraction of~$A \to B$ respectively a section of~$B \to C$.
 Therefore the sequence splits. The claim follows since additive functors
 preserve biproducts.\footnote{Formally, a biproduct of two objects~$X$ and~$Y$
 consists of morphisms~$\iota_X : X \to X \oplus Y$, $\iota_Y :Y \to X \oplus
-Y$, $\pi_X : X \oplus Y \to X$, $\pi_Y : X \oplus Y \to Y$ such that~$(X \oplus
-Y, \iota_X, \iota_Y)$ is a categorical coproduct of~$X$ and~$Y$ and such
-that~$(X \oplus Y, \pi_X, \pi_Y)$ is a product of~$X$ and~$Y$. This can also be
-characterized using the group structure on the hom-sets: The morphisms should
-satisfy the five relations~$\pi_X \circ \iota_X = \id_X$, $\pi_Y \circ \iota_Y
-= \id_Y$, $\pi_Y \circ \iota_X = 0$, $\pi_X \circ \iota_Y = 0$, $\iota_X \circ
-\pi_X + \iota_Y \circ \pi_Y = \id_{X \oplus Y}$. Additive functors carry these
-equations into equations of the same kind.}
+Y$, $\pi_X : X \oplus Y \to X$, $\pi_Y : X \oplus Y \to Y$ satisfying the five
+relations~$\pi_X \circ \iota_X = \id_X$, $\pi_Y \circ \iota_Y = \id_Y$, $\pi_Y
+\circ \iota_X = 0$, $\pi_X \circ \iota_Y = 0$, $\iota_X \circ \pi_X + \iota_Y
+\circ \pi_Y = \id_{X \oplus Y}.$ (These relations imply in particular that~$(X \oplus Y,
+\iota_X, \iota_Y)$ is a categorical coproduct of~$X$ and~$Y$ and that~$(X
+\oplus Y, \pi_X, \pi_Y)$ is a categorical product of~$X$ and~$Y$.) Additive
+functors carry these equations into equations of the same kind.}
 \end{proof}
 
 \section{Resolutions}
