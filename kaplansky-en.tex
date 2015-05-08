@@ -1,6 +1,6 @@
 \documentclass[12pt]{scrartcl}
 \usepackage[utf8]{inputenc}
-\usepackage[ngerman]{babel}
+\usepackage[english]{babel}
 \usepackage{amsthm,amssymb,mathtools}
 \usepackage[protrusion=true,expansion=true]{microtype}
 
@@ -31,7 +31,7 @@
 
 \enlargethispage{4em}
 
-\begin{center}\huge\textbf{\textsf{Vektor bundles on affine schemes}}\end{center}
+\begin{center}\huge\textbf{\textsf{Vector bundles on affine schemes}}\end{center}
 \bigskip
 
 \begin{lemma}Let~$A$ be a local ring. Let~$\aaa$ be a finitely generated
@@ -49,59 +49,53 @@ second that~$\aaa = (1)$.
 Then~$P$ is equivalent to a diagonal matrix with entries~$1$ and~$0$.
 \end{lemma}
 
-\begin{proof}Da~$P$ idempotent ist, sind auch die Ideale~$(\Lambda^i P)$
-der~$i$-Minoren idempotent: \[ (\Lambda^i P) = (\Lambda^i (P \circ P)) =
+\begin{proof}Since~$P$ is idempotent, so are its ideals~$(\Lambda^i P)$
+of~$i$-minors:
+\[ (\Lambda^i P) = (\Lambda^i (P \circ P)) =
 (\Lambda^i P \circ \Lambda^i P) \subseteq (\Lambda^i P) \cdot (\Lambda^i P)
-\subseteq (\Lambda^i P). \] Nach dem vorherigen Lemma sind sie daher jeweils
-Null oder Eins. Da sie eine absteigende Kette bilden, gibt es somit eine
-Zahl~$r$, sodass~$(\Lambda^r P) = (1)$ und~$(\Lambda^{r+1} P) = (0)$. Also sind
-alle~$(r+1)$-Minoren von~$P$ Null, und es gibt -- da~$A$ lokal ist --
-mindestens einen invertierbaren~$r$-Minor. Somit lässt sich~$P$ durch Zeilen-
-und Spaltentransformationen auf eine Diagonalmatrix der gewünschten Art
-bringen. \end{proof}
-
-\begin{rem}Man kann sogar zeigen, dass~$P$ \emph{ähnlich} zu einer
-Diagonalmatrix dieser Art ist. Denn mit dem Lemma ist klar, dass Bild und Kern
-von~$P$ frei von endlichem Rang sind. Kombiniert man Basen von Bild und Kern,
-so erhält man eine Basis des vollen Spaltenraums, bezüglich der die
-entsprechend transformierte Matrix eine Diagonalmatrix der gewünschten Art
-ist.\end{rem}
-
-\begin{prop}Sei~$M$ ein Modul über einem Ring~$A$. Genau dann ist~$M$
-endlich erzeugt und projektiv, wenn es eine Zerlegung~$1 = \sum_i f_i \in A$
-gibt, sodass die lokalisierten Moduln~$M[f_i^{-1}]$ jeweils freie Moduln
-endlichen Rangs sind.\end{prop}
-
-\begin{proof}Sei~$M$ endlich erzeugt und projektiv. Dann gibt es eine lineare
-Surjektion~$p : A^n \to M$ mit Schnitt~$s : M \to A^n$. Die Komposition~$P
-\defeq s \circ p$ ist idempotent und~$M$ ist isomorph zu~$A^n/\operatorname{ker}(P)$.
-Interpretiert man das vorherige Lemma im kleinen Zariski-Topos
-über~$\operatorname{Spec} A$, sieht man, dass eine Zerlegung der Eins
-existiert, sodass~$P$ über den lokalisierten Ringen jeweils äquivalent zu einer
-Diagonalmatrix mit Einträgen~$1$ und~$0$ ist. Da Lokalisieren exakt ist, ist
-somit~$A^n/\operatorname{ker}(P)$ lokal frei von endlichem Rang.
-
-Sei umgekehrt ein Modul~$M$ gegeben, der lokal frei von endlichem Rang ist.
-Dann ist~$M$ insbesondere lokal endlich erzeugt und somit auch global endlich erzeugt. Sei~$A^n \to M$ eine lineare
-Surjektion. Ihr Kern ist lokal endlich erzeugt, da Lokalisieren exakt ist
-und~$M$ lokal endlich präsentiert ist. Damit ist ihr Kern auch global endlich
-erzeugt; folglich ist~$M$ endlich präsentiert.
-
-Um nun die Projektivität
-von~$M$ nachzuweisen, sei eine lineare Surjektion~$X \to Y$ gegeben. Es ist zu
-zeigen, dass die induzierte Abbildung~$\Hom_A(M,X) \to \Hom_A(M,Y)$ ebenfalls
-surjektiv ist. Da~$M$ lokal projektiv ist und~$\Hom_A(M,\cdot)$ aufgrund der
-endlichen Präsentation von~$M$ mit Lokalisieren vertauscht, ist diese Abbildung
-lokal surjektiv und somit surjektiv.
+\subseteq (\Lambda^i P). \]
+By the previous lemma, they are therefore each equal to~$(0)$ or~$(1)$. Since
+they form a descending chain, there exists a stage~$r$ such that~$(\Lambda^r P)
+= (1)$ and~$(\Lambda^{r+1} P) = (0)$. Therefore all~$(r+1)$-minors of~$P$ are
+zero, and -- since~$A$ is a local ring -- there exists at least one
+invertible~$r$-minor. Thus~$P$ can be made into a diagonal matrix of the
+desired form by applying row and column transformations.
 \end{proof}
 
-\begin{cor}Sei~$M$ ein Modul über einem Ring~$A$. Die induzierte
-quasikohärente Modulgarbe~$M^\sim$ auf~$\operatorname{Spec} A$ ist genau dann ein Vektorbündel, wenn~$M$
-endlich erzeugt und projektiv ist.\end{cor}
+\begin{rem}We can even show that~$P$ is \emph{similar} to a diagonal matrix
+with entries~$1$ and~$0$: By the lemma, image and kernel of~$P$ are finite
+free. Combining bases of these subspaces, we obtain a basis of the full space;
+expressing~$P$ with respect to this basis, we obtain a diagonal matrix of the
+desired form.\end{rem}
 
-%\begin{proof}Wegen der Äquivalenz zwischen quasikohärenten Modulgarben auf
-%affinen Schemata und gewöhnlichen Moduln auf Ringen ist die Modulgarbe~$M^\sim$
-%genau dann ein Vektorbündel, also lokal frei von endlichem Rang, wenn~$M$ lokal
-%frei von endlichem Rang ist.\end{proof}
+\begin{prop}An~$A$-module~$M$ is finitely generated and projective if and only
+if there exists a partition~$1 = \sum_i f_i \in A$ such that the localized
+modules~$M[f_i^{-1}]$ are each finite free over~$A[f_i^{-1}]$.\end{prop}
+
+\begin{proof}Let~$M$ be a finitely generated and projective~$A$-module. Then
+there exists a linear surjection~$p : A^n \to M$ with a section~$s : M \to
+A^n$. The composition~$P \defeq s \circ p$ is idempotent and~$M$ is isomorphic
+to~$A^n/\operatorname{ker}(P)$. Interpreting the previous lemma in the little
+Zariski topos of~$\operatorname{Spec} A$, we see that there exists a partition
+of unity such that~$P$ is, over each of the localized rings, equivalent to a
+diagonal matrix with entries~$1$ and~$0$. Since localization is exact, the
+module~$A^n/\operatorname{ker}(P)$ is therefore finite locally free.
+
+Conversely, let~$M$ be a finite locally free~$A$-module. Then~$M$ is locally
+finitely generated and therefore also globally finitely generated. Fix a linear
+surjection~$A^n \to M$. Its kernel is finitely generated, since localization is
+exact and~$M$ is locally finitely presented. Thus the kernel is also globally
+finitely generated. This shows that~$M$ is finitely presented.
+
+To verify that~$M$ is projective, consider an arbitrary linear surjection~$X
+\to Y$. We have to show that the postcomposition map~$\Hom_A(M,X) \to
+\Hom_A(M,Y)$ is too surjective. Since~$M$ is locally projective and
+since~$\Hom_A(M,\cdot)$ commutes with localization (because~$M$ is finitely
+presented), this map is locally surjective and therefore surjective.
+\end{proof}
+
+\begin{cor}Let~$M$ be an~$A$-module. The induced quasicoherent sheaf of
+modules~$M^\sim$ on~$\operatorname{Spec} A$ is a vector bundle if and only
+if~$M$ is finitely generated and projective.\end{cor}
 
 \end{document}
