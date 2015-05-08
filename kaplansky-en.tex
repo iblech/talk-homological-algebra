@@ -3,6 +3,7 @@
 \usepackage[english]{babel}
 \usepackage{amsthm,amssymb,mathtools}
 \usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{hyperref}
 
 \usepackage[T1]{fontenc}
 \usepackage{libertine}
@@ -29,19 +30,24 @@
 
 \begin{document}
 
-\enlargethispage{4em}
+\vspace*{-3.8em}
+\enlargethispage{5em}
 
 \begin{center}\huge\textbf{\textsf{Vector bundles on affine schemes}}\end{center}
 \bigskip
 
-\begin{lemma}Let~$A$ be a local ring. Let~$\aaa$ be a finitely generated
-idempotent ideal in $A$. Then~$\aaa = (0)$ or~$\aaa = (1)$.
+\begin{lemma}Let~$\aaa$ be a finitely generated
+idempotent ideal in a local ring~$A$. Then~$\aaa = (0)$ or~$\aaa = (1)$.
 \end{lemma}
 
 \begin{proof}Consider~$\aaa$ as a finitely generated~$A$-module. Then, by
 Nakayama's lemma, there exists an element~$x \in A$ such that~$x \equiv 1$
 modulo~$\aaa$ and~$x \aaa = 0$. Since~$A$ is a local ring, $x$ is invertible
-or~$1-x$ is invertible. In the first case it follows that~$\aaa = (0)$, in the
+or~$1-x$ is invertible.\footnote{Recall that a ring is \emph{local} if and only
+if any invertible finite sum of elements contains an invertible summand. That
+is: $1 \neq 0$ and if $x + y$ is invertible, then~$x$ is invertible or~$y$ is
+invertible.}
+In the first case it follows that~$\aaa = (0)$, in the
 second that~$\aaa = (1)$.
 \end{proof}
 
@@ -76,7 +82,9 @@ modules~$M[f_i^{-1}]$ are each finite free over~$A[f_i^{-1}]$.\end{prop}
 there exists a linear surjection~$p : A^n \to M$ with a section~$s : M \to
 A^n$. The composition~$P \defeq s \circ p$ is idempotent and~$M$ is isomorphic
 to~$A^n/\operatorname{ker}(P)$. Interpreting the previous lemma in the little
-Zariski topos of~$\operatorname{Spec} A$, we see that there exists a partition
+Zariski topos of~$\operatorname{Spec} A$ (or alternatively just observing that
+the lemma invoked the defining axiom of local rings only a finite number of
+times), we see that there exists a partition
 of unity such that~$P$ is, over each of the localized rings, equivalent to a
 diagonal matrix with entries~$1$ and~$0$. Since localization is exact, the
 module~$A^n/\operatorname{ker}(P)$ is therefore finite locally free.
@@ -84,14 +92,25 @@ module~$A^n/\operatorname{ker}(P)$ is therefore finite locally free.
 Conversely, let~$M$ be a finite locally free~$A$-module. Then~$M$ is locally
 finitely generated and therefore also globally finitely generated. Fix a linear
 surjection~$A^n \to M$. Its kernel is finitely generated, since localization is
-exact and~$M$ is locally finitely presented. Thus the kernel is also globally
+exact and~$M$ is locally finitely presented.\footnote{Recall that a module~$N$ is finitely
+presented if and only if there exists an exact sequence~$A^n \to A^m \to N \to
+0$. So the definition only demands that the kernel of the given surjection~$A^m \to
+N$ is finitely generated. However, one can show that even the kernel of \emph{any}
+surjection~$A^p \to N$ is finitely generated. See for instance~Prop.~3.6 in
+\href{http://math.uga.edu/~pete/integral.pdf}{Pete Clark's notes on commutative
+algebra}.}
+Thus the kernel is also globally
 finitely generated. This shows that~$M$ is finitely presented.
 
 To verify that~$M$ is projective, consider an arbitrary linear surjection~$X
 \to Y$. We have to show that the postcomposition map~$\Hom_A(M,X) \to
 \Hom_A(M,Y)$ is too surjective. Since~$M$ is locally projective and
-since~$\Hom_A(M,\cdot)$ commutes with localization (because~$M$ is finitely
-presented), this map is locally surjective and therefore surjective.
+since~$\Hom_A(M,\cdot)$ commutes with localization (this is because~$M$ is finitely
+presented),\footnote{Write~$M \cong A^m/\operatorname{im}(K)$ with~$K = (k_{ij})
+\in A^{m \times n}$. Then~$\Hom_A(M,N)
+\cong \{ x \in N^m \,|\, \sum_i k_{ij} x_i = 0,\, j = 1,\ldots,n \}$. With this
+explicit description one can verify that~$\Hom_A(M,\cdot)$ commutes with
+localization.} this map is locally surjective and therefore surjective.
 \end{proof}
 
 \begin{cor}Let~$M$ be an~$A$-module. The induced quasicoherent sheaf of
