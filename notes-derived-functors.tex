@@ -606,7 +606,8 @@ injectivity of~$J^0$. The induction step is a bit more complicated.
 \end{proof}
 
 \begin{cor}\label{cor:inj-he}Any two injective resolutions of an object are
-homotopy equivalent.\end{cor}
+homotopy equivalent. Furthermore, the witnessing homotopy equivalence is unique
+up to homotopy, if we demand compatibility with the augmentations.\end{cor}
 \begin{proof}Let~$0 \to X \to I^\bullet$ and~$0 \to X \to J^\bullet$ be
 injective resolutions. By the previous lemma, the identity~$\id_X : X \to X$ lifts to
 morphisms~$I^\bullet \to J^\bullet$ and~$J^\bullet \to I^\bullet$. The
@@ -684,7 +685,10 @@ isomorphic cohomology.
 Summing up, the complex~$\RR F(X)$ is well-defined up to quasi-isomorphism and~$R^n F(X)$
 is well-defined up to isomorphism. For reasons to be stated below, we don't
 want to stress that with our definition,~$\RR F(X)$ is actually even
-well-defined up to homotopy equivalence.
+well-defined up to homotopy equivalence.\footnote{The isomorphism on cohomology
+(respectively the isomorphism on complexes in the \emph{derived category}) is
+unique with a certain property. This is what allows to speak of ``the'' derived
+functor.}
 
 Suppose we fix an injective resolution for every object of~$\A$. Then the rule~$X
 \mapsto R^n F(X)$ can be made into an additive functor~$R^n F : \A \to \B$,
@@ -749,6 +753,7 @@ cohomology}.
 \end{itemize}
 
 The raison d'être for derived functors is given by the following lemma.
+\enlargethispage{2em}
 
 \begin{lemma}Let~$F : \A \to \B$ be a left-exact functor between abelian
 categories. Assume that~$\A$ has enough injectives. Then, for any short exact
