@@ -339,8 +339,8 @@ I$, there exists a lift of that morphism to~$Y$.
   & I
 } \]
 Dually, an object~$P$ is \emph{projective} if and only if, for any
-epimorphism~$X \twoheadrightarrow Y$ and any morphism~$P \to X$, there exists a
-co-lift of that morphism to~$Y$.
+epimorphism~$X \twoheadrightarrow Y$ and any morphism~$P \to Y$, there exists a
+co-lift of that morphism to~$X$.
 \[ \xymatrix{
    X \ar@{->>}[r] & Y \ar[r] & 0 \\
   & P \ar[u] \ar@{-->}[lu]
@@ -393,7 +393,8 @@ projective.\end{ex}
 \begin{ex}An easy example of a projective module which is not free is
 the~$\ZZ/(6)$-module~$\ZZ/(2)$. It is projective because there is the direct sum
 decomposition $\ZZ/(6) \cong \ZZ/(2) \oplus \ZZ/(3)$. It is not free because
-its number of elements is not a multiple of~$6$.\end{ex}
+its number of elements is not a multiple of~$6$. (Geometrically, it is a vector
+bundle whose rank varies on the two components of~$\Spec \ZZ/(6)$.)\end{ex}
 
 \begin{ex}Let~$\mmm = (3, 1 + \sqrt{-5})$ be the famous example of an ideal
 of~$R = \ZZ[\sqrt{-5}]$ which is locally, but not globally principal.
@@ -409,7 +410,9 @@ corresponds to the fact that a module is projective and finitely generated if
 and only if there is a partition~$1 = \sum_i f_i \in R$ such that the localized
 modules~$M[f_i^{-1}]$ are finite free~$R[f_i^{-1}]$-modules. See for instance
 Theorem~7.22 in \href{http://math.uga.edu/~pete/integral.pdf}{Pete Clark's
-notes on commutative algebra}.}
+notes on commutative algebra} or
+\href{https://rawgit.com/iblech/talk-homological-algebra/master/kaplansky-en.pdf}{this
+linked one-page note}.}
 It is a
 trivial bundle if and only if~$M$ is finite free. There is an analogous
 relation in the smooth setting: The category of smooth vector bundles on a
@@ -474,7 +477,7 @@ If the chosen family is linearly independent, this map is an isomorphism and~$0
 general, the \emph{module of relations}~$K_0$, the kernel of~$A^{(I)}
 \twoheadrightarrow M$, will be nontrivial. Picking generators for~$K_0$, we
 obtain a surjective map~$A^{(J)} \twoheadrightarrow K_0$ which we can compose
-with the inclusion~$K_0 \hookrightarrow A^{(I)}$. In this way, the top row in
+with the inclusion~$K_0 \hookrightarrow A^{(I)}$. In this way the top row in
 the diagram
 \[ \xymatrixcolsep{1pc}\xymatrix{
   A^{(J)} \ar[rr] \ar@{->>}[rd] & & A^{(I)} \ar@{->>}[rr] && M \ar[r] & 0 \\
@@ -572,7 +575,7 @@ length~$n$, \ie comprising objects~$P^0$ to~$P^{-n}$.\footnote{The equivalence
 is not entirely trivial. One can use the \emph{dimension shifting trick}
 and the characterization of injective objects as those objects~$I$ such
 that~$\Ext^1(T,I) = 0$ for all objects~$T$; dually, an object~$P$ is projective
-if and only if~$\Ext^1(P,T) = 0$ for alle objects~$T$.} The homological
+if and only if~$\Ext^1(P,T) = 0$ for all objects~$T$.} The homological
 dimension is one way to measure the homological complexity of a category. For
 instance, the category of vector spaces over a field has homological dimension
 zero, since any object is projective (and injective).
@@ -581,6 +584,7 @@ More generally, there is
 an intriguing relation between the homological dimension of the category of
 modules over a ring and its Krull dimension: If the ring is a \emph{regular
 ring}, they coincide. For instance, the homological dimension of the category
+% XXX: is that correct?
 of~$k[x_1,\ldots,x_n]$-modules, where~$k$ is a field, is~$n$. Relatedly, the
 category of coherent sheaves on a smooth projective variety of
 dimension~$n$ has homological dimension~$n$.
@@ -671,10 +675,10 @@ $R^n F(X) \defeq H^n(\RR F(X)) = H^n(F(I^\bullet))$.
 So, to calculate~$R^n F(X)$, we take an injective resolution of~$X$, apply~$F$
 to this complex (making sure to strip the leading~``$F(X)$''), and then take
 cohomology. Note that, even though the complex~$I^\bullet$ is not acyclic only
-at position zero, the complex~$F(I^\bullet)$ may have cohomology in arbitrary
+at position zero, the complex~$F(I^\bullet)$ may have cohomology in arbitrarily
 high degrees~(!).
 
-Since we made the arbitrary choice of an injective resolution, we have to
+Since we made an arbitrary choice of an injective resolution, we have to
 discuss well-definedness of course. If~$0 \to X \to J^\bullet$ is a second
 injective resolution, there is a homotopy equivalence~$I^\bullet \simeq
 J^\bullet$ by Corollary~\ref{cor:inj-he}. This equivalence is preserved by the
@@ -716,7 +720,9 @@ be found.
 
 \begin{ex}Assume~$F$ to even be exact. Then the higher derived functors of~$F$
 vanish, \ie~$R^n F(X) = 0$ for all objects~$X$ and~$n > 0$. To verify this, use
-that exact functors commute with cohomology.\end{ex}
+that exact functors commute with cohomology. Conversely, we'll see below that a
+left-exact functor for which all higher derived functors vanish is
+exact.\end{ex}
 
 This suggests the following motto: \emph{Derived functors measure the
 failure of a functor to be exact.}
@@ -753,7 +759,7 @@ cohomology}.
 \end{itemize}
 
 The raison d'être for derived functors is given by the following lemma.
-\enlargethispage{2em}
+\enlargethispage{3em}
 
 \begin{lemma}Let~$F : \A \to \B$ be a left-exact functor between abelian
 categories. Assume that~$\A$ has enough injectives. Then, for any short exact
@@ -807,13 +813,14 @@ finding a quasi-isomorphism~$K^\bullet \to I^\bullet$ to a complex consisting
 of injectives and setting~$\RR F(K^\bullet) \defeq F(I^\bullet)$. Also one has
 to impose some finiteness conditions, for instance~$A$ should be Noetherian
 and~$M$ finitely generated.} Similarly, in algebraic geometry, there is the
+% XXX: why?
 \emph{projection formula}
-\[ \pi_*\E \otimes \F \cong \pi_*(\E \otimes \pi^*\G), \]
-valid in the case that~$\G$ is a locally free sheaf.
+\[ \pi_*\E \otimes \F \cong \pi_*(\E \otimes \pi^*\F), \]
+valid in the case that~$\F$ is a locally free sheaf.
 For the derived functors, the formula holds in complete generality, assuming
 only some finiteness conditions:
-\[ \RR\pi_*(\E^\bullet) \otimes^\LL \F^\bullet \simeq_\text{qis}
-\RR\pi_*(\E^\bullet \otimes^\LL \LL\pi^*\G^\bullet). \]
+\[ \RR\pi_*(\E^\bullet) \stackrel{\LL}{\otimes} \F^\bullet \simeq_\text{qis}
+\RR\pi_*(\E^\bullet \stackrel{\LL}{\otimes} \LL\pi^*\G^\bullet). \]
 
 \section{Example: Ext}
 \sectionsummary{Definition \textbullet{} lifting problems \textbullet{}
@@ -932,7 +939,7 @@ V(\I) \defeq V(\I) \ip V(\I')$. For instance, any two lines in~$\PP^2_k$ should
 have intersection product~$1$, even if we intersect a line with itself.
 
 The correct definition is given by \emph{Serre's intersection formula}
-\[ V(\I) \ip V(\J) \defeq \chi(\O_X/\I \otimes^\LL_{\O_X} \O_X/\J) \defeq
+\[ V(\I) \ip V(\J) \defeq \chi(\O_X/\I \stackrel{\LL}{\otimes}_{\O_X} \O_X/\J) \defeq
   \sum_{n=0}^\infty (-1)^n \chi(\Tor_n^{\O_X}(\O_X/\I,\O_X/\J)). \]
 It is a refinement of the naive definition, which is the~$n = 0$ term in the
 sum. In the case that~$V(\I)$ and~$V(\J)$ happen to be in general position, one can
