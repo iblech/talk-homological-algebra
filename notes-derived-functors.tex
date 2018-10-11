@@ -173,7 +173,7 @@ cokernel of~$FY \to FZ$ at the end; but there is a better way, given by the
 \emph{right-derived functors} of~$F$: There is a long exact sequence
 \[ 0 \to F(X) \to F(Y) \to F(Z) \to R^1F(X) \to R^1F(Y) \to R^1F(Z) \to
 R^2F(X) \to \cdots \]
-depending functorially on the given short exact sequence. Note that this way,
+depending functorially on the given short exact sequence. This way
 only the map~$F(Z) \to R^1F(X)$, but not the object~$R^1 F(X)$, depends on~$Y$ and~$Z$.
 To construct~$R^n F(X)$, we pick an \emph{injective resolution}~$0 \to X \to
 I^\bullet$ of~$X$ and set~$R^n F(X) \defeq H^n(F(I^\bullet))$.
@@ -347,7 +347,7 @@ co-lift of that morphism to~$X$.
 } \]
 \end{defn}
 
-Note that no uniqueness of the lifts is required.
+No uniqueness of the lifts is required.
 
 \begin{ex}In the category of vector spaces over some field, assuming the axiom
 of choice, any object~$I$ is injective: Simply take a basis of~$X$, extend it to a
@@ -357,11 +357,12 @@ from a homological point of view.\end{ex}
 
 \begin{ex}\emph{Baer's criterion} states that in the category of abelian
 groups, assuming the axiom of choice, a group~$G$ is injective if and only if
-it is \emph{divisible}, \ie if for any~$x \in G$ and~$n \geq 1$ there exists an
+it is \emph{divisible}, that is if for any~$x \in G$ and~$n \geq 1$ there exists an
 element~$y \in G$ such that~$x = ny$.\footnote{The ``only if'' direction is
 easy: Let~$x \in G$ and~$n \geq 1$. Then consider the injective map~$\ZZ
 \xrightarrow{n} \ZZ$. The sought element~$y$ can be obtained as the image
-of~$1$ under a lift of the map~$\ZZ \to G,\,1 \mapsto x$.} For example, the
+of~$1$ under a lift of the map~$\ZZ \to G,\,1 \mapsto x$. The standard proof of
+the converse direction employs the axiom of choice.} For example, the
 groups~$\QQ$ and~$\QQ/\ZZ$ are injective.
 \end{ex}
 
@@ -431,7 +432,7 @@ categories. Let~$X^\bullet$ be a bounded below complex of injective objects or
 a bounded above complex of projective objects. If~$X^\bullet$ is acyclic,
 then~$F(X^\bullet)$ is acyclic as well~(!).\end{lemma}
 
-Note that the statement is totally false without the injectivity or
+The statement is totally false without the injectivity or
 projectivity assumption.
 
 \begin{proof}One can show that such a complex~$X^\bullet$ is homotopy equivalent to
@@ -466,12 +467,12 @@ functors carry these equations into equations of the same kind.}
 category is an exact sequence of the form~$0 \to X \to I^0 \to I^1 \to \cdots$,
 where the objects~$I^n$ are all injective. A short notation is~$0 \to X \to
 I^\bullet$. Dually, a \emph{projective resolution} is an exact
-sequence~$P^\bullet \to X \to 0$ with the~$P^{-n}$,~$n \geq 0$, projective.
+sequence~$P^\bullet \to X \to 0$ with the objects~$P^{-n}$,~$n \geq 0$, projective.
 \end{defn}
 
 \begin{ex}\label{ex:syzygies-resolution}Let~$M$ be an~$A$-module. Picking some
-set of generators, we obtain a surjective map~$A^{(I)} \twoheadrightarrow M$.
-If the chosen family is linearly independent, this map is an isomorphism and~$0
+system of generators, we obtain a surjective map~$A^{(I)} \twoheadrightarrow M$.
+If the chosen system is linearly independent, this map is an isomorphism and~$0
 \to A^{(I)} \twoheadrightarrow M \to 0$ is a projective resolution of~$M$.
 (Recall that free modules are projective, assuming the axiom of choice.) But in
 general, the \emph{module of relations}~$K_0$, the kernel of~$A^{(I)}
@@ -642,8 +643,7 @@ H^n(L^\bullet)$ in cohomology are isomorphisms for all~$n$.\footnotemark
 
 Any homotopy equivalence is a quasi-isomorphism, but the converse is totally
 false.
-\footnotetext{Note that
-if~$K^\bullet \to L^\bullet$ is a quasi-isomorphism, there is usually no
+\footnotetext{If~$K^\bullet \to L^\bullet$ is a quasi-isomorphism, there is usually no
 quasi-isomorphism in the opposite direction. For instance, there is no
 quasi-isomorphism~$(\ZZ/(2))[0] \to P^\bullet$ when~$P^\bullet \to \ZZ/(2) \to
 0$ is the projective resolution of Example~\ref{ex:res-z2}. Accordingly, we say
@@ -651,7 +651,7 @@ that two complexes~$K^\bullet$ and~$L^\bullet$ are \emph{quasi-isomorphic} not
 when there exists a quasi-isomorphism between them, but when there exists a
 \emph{zigzag} of quasi-isomorphisms~$K^\bullet \to Z_0^\bullet \leftarrow
 Z_1^\bullet \to Z_2^\bullet \leftarrow \cdots \to Z_n^\bullet \leftarrow
-Y^\bullet$. This complication is a source of technical difficulties. Note that to say
+Y^\bullet$. This complication is a source of technical difficulties. To say
 that~$K^\bullet$ and~$L^\bullet$ are quasi-isomorphic is slightly stronger than
 to say that they have isomorphic cohomology. In the latter case, there is no
 guarantee that the isomorphisms are induced by a (zigzag of) morphisms of
@@ -674,7 +674,7 @@ $R^n F(X) \defeq H^n(\RR F(X)) = H^n(F(I^\bullet))$.
 
 So, to calculate~$R^n F(X)$, we take an injective resolution of~$X$, apply~$F$
 to this complex (making sure to strip the leading~``$F(X)$''), and then take
-cohomology. Note that, even though the complex~$I^\bullet$ is not acyclic only
+cohomology. Even though the complex~$I^\bullet$ is not acyclic only
 at position zero, the complex~$F(I^\bullet)$ may have cohomology in arbitrarily
 high degrees~(!).
 
@@ -713,9 +713,9 @@ the exact sequence~$0 \to X \to I^0 \to I^1$.
 
 It is in this sense that the~$R^n F$ are ``derived'' functors of~$F$; $R^0 F$
 coincides with~$F$ and the higher derived functors bear some relation with~$F$.
-But note that~$R^{n+1} F$ is \emph{not} the first derived functor of~$R^n F$
+But~$R^{n+1} F$ is \emph{not} the first derived functor of~$R^n F$
 (indeed, in general the higher derived functors are neither left- nor
-right-exact, so we cannot derive them) and that there is no Leibniz rule to
+right-exact, so we cannot derive them) and there is no Leibniz rule to
 be found.
 
 \begin{ex}Assume~$F$ to even be exact. Then the higher derived functors of~$F$
@@ -742,7 +742,7 @@ functor is therefore the complex
 which can be simplified using~$F(\ZZ) \cong \ZZ$ to
 \[ 0 \lra \ZZ \stackrel{2}{\longrightarrow} \ZZ \lra 0. \]
 Thus we obtain~$R^0 F(\ZZ) \cong F(\ZZ) = 0$ and~$R^1 F(\ZZ) \cong \ZZ/(2)$.
-Note that the torsion did not vanish, but instead moved to~$R^1$.
+The torsion did not vanish, but instead moved to~$R^1$.
 \end{ex}
 
 Many important functors are derived functors. For instance,
@@ -772,7 +772,7 @@ depending functorially on the short exact sequence.\end{lemma}
 relating injective resolutions of~$X$, $Y$, and~$Z$. Then perform the usual
 diagram chase to construct the connecting morphisms.\end{proof}
 
-Note that the lemma shows very visibly that~$F$ is exact if and only if~$R^1 F
+The lemma shows very visibly that~$F$ is exact if and only if~$R^1 F
 = 0$.
 
 In practice, calculating the higher derived functors can be quite hard. There
@@ -786,7 +786,7 @@ categories. Assume that~$\A$ has enough injectives. Let~$X$ be an object
 of~$\A$. Let~$0 \to X \to U^\bullet$ be a resolution of~$X$ by
 \emph{$F$-acyclic objects}, \ie objects such that~$R^{\geq 1}F(U^m) = 0$.
 Then~$\RR F(X)$ is quasi-isomorphic to~$F(U^\bullet)$ and in particular~$R^n
-F(X) \cong H^n(F(U^\bullet))$.\footnote{Note that~$\RR F(X)$ will in general
+F(X) \cong H^n(F(U^\bullet))$.\footnote{The complex~$\RR F(X)$ will in general
 \emph{not} be homotopy equivalent to~$F(U^\bullet)$. This is the reason why we
 identify~$\RR F(X)$ up to quasi-isomorphism and not up to homotopy equivalence.}\end{lemma}
 
@@ -1058,7 +1058,7 @@ massively sped up by transporting them along the equivalence to work with the
 exterior algebra instead (which is finite dimensional over~$k$).\footnote{See
 articles by Mohamed Barakat for details.}
 
-In geometry, there are are important examples of schemes which ``should'' be
+In algebraic geometry, there are are important examples of schemes which ``should'' be
 the same in some sense but are not isomorphic. In this case, their relation is
 sometimes captured by a \emph{derived equivalence}, \ie an equivalence between
 the associated derived categories of sheaves of modules. This is, for instance,
@@ -1099,8 +1099,8 @@ extend the theory to non-abelian situations. For instance, let~$f : X \to Y$
 and~$g : Y \to Z$ be morphisms of schemes. Then there is an exact sequence
 \[ f^* \Omega^1_{Y/Z} \lra \Omega^1_{X/Z} \lra \Omega^1_{X/Y} \lra 0 \]
 relating several sheaves of Kähler differentials. Of course, noticing the
-missing zero at the front, you can hear this sequence screaming ``derive
-me!''.\footnote{The author learned of those screams from Timo Schürg.}
+missing zero at the front, you can hear this sequence crying ``derive
+me!''.\footnote{The author learned of these cries from Timo Schürg.}
 
 This phenomenon is already visible on the level of affine schemes: Let~$A \to B
 \to C$ be ring homomorphisms. Then there is an exact sequence
