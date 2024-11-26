@@ -1,0 +1,287 @@
+\documentclass[12pt]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm,amssymb,mathtools}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{hyperref}
+
+\usepackage{libertine}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{plain}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{theorem}[definition]{Theorem}
+
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem{example}[definition]{Example}
+
+\DeclareMathOperator{\cok}{cok}
+\DeclareMathOperator{\kernel}{ker}
+\DeclareMathOperator{\image}{im}
+\newcommand{\defeq}{\vcentcolon=}
+
+\begin{document}
+
+\begin{center}\huge\textbf{Modules over principal ideal domains:} \\ \emph{the Smith normal form approach}\end{center}
+
+\section{Preliminaries from linear algebra}
+
+\subsection{Generalities about equivalence of matrices}
+
+\begin{definition}
+    Two matrices~$P, Q \in A^{n \times m}$ over a commutative ring~$A$ are \emph{equivalent}, denoted~$P \approx Q$, if and only if there are invertible matrices~$S \in A^{n \times n}$ and~$R \in A^{m \times m}$ such that~$Q = SPR$.
+\end{definition}
+
+\begin{remark}
+    By definition, a matrix~$S \in A^{n \times n}$ is \emph{invertible} if and only if there is a matrix~$T \in A^{n \times n}$ such that~$ST$ and~$TS$ are identity matrices. Using the \emph{adjoint matrix construction} one can show that a matrix~$S$ is invertible if and only if~$\det{S}$ is invertible in~$A$.
+\end{remark}
+
+\begin{example}\label{ex:elementary}
+    The following row operations yield equivalent matrices (and so do the analogous column operations):
+    \begin{enumerate}
+        \item Swapping two rows.
+        \item Adding a multiple of a row to another.
+        \item Scaling a row by an invertible element of the ring.
+    \end{enumerate}
+    The operation~``substitute row~$i$ by~$a$ times row~$i$ plus~$b$ times row~$j$'', where~$i \neq j$, is only guaranteed to yield an equivalent matrix if~$a$ is invertible. This is a difference to linear algebra over fields, where it would be sufficient that~$a$ is not zero.
+\end{example}
+
+\begin{example}\label{ex:block}
+    Let~$P \approx P'$ and~$Q \approx Q'$. Then we have the equivalence
+    \[ \begin{pmatrix}P&0\\0&Q\end{pmatrix} \approx \begin{pmatrix}P'&0\\0&Q'\end{pmatrix} \]
+    of block diagonal matrices.
+\end{example}
+
+\begin{definition}
+    Let~$P \in A^{n \times m}$ be a matrix over a commutative ring~$A$. The \emph{cokernel} of~$P$ is the~$A$-module
+    \[ \cok{P} \defeq A^n/\image{P}. \]
+\end{definition}
+
+\begin{proposition}\label{prop:eqv-cok}
+    Equivalent matrices have isomorphic cokernels:
+    Let~$P,Q \in A^{n \times m}$ be matrices over
+    a commutative ring~$A$. If~$P \approx Q$,
+    then~$\cok{P} \cong \cok{Q}$.
+\end{proposition}
+
+\begin{proof}
+    If~$P \approx Q$, there are invertible matrices~$S \in A^{n \times n}$, $R \in A^{m \times m}$ such that~$Q = SPR$. One can check that mapping
+    \[ \cok{P} \longrightarrow \cok{Q},
+    [x] \longmapsto [Sx] \]
+    results in a well-defined module isomorphism with inverse given by~$[y] \mapsto [S^{-1}y]$. (Well-definedness is seen as follows: If~$x \in \image{P}$, so~$x = Pv$ for some~$v \in A^m$, then~$Sx = SPv = SPRR^{-1}v = QR^{-1}v \in \image{Q}$.)
+\end{proof}
+
+\begin{proposition}\label{prop:diag-cok}
+    Let~$D \in A^{n \times m}$ be a diagonal matrix over a commutative ring~$A$. Then the cokernel of~$D$ is canonically isomorphic to the direct sum
+    \[ X \defeq A/(d_1) \oplus \ldots \oplus A/(d_n), \]
+    where~$d_1,\ldots,d_r$ with~$r = \min\{n,m\}$ are the diagonal entries of~$D$ and~$d_{r+1},\ldots,d_n$ are zero.
+\end{proposition}
+
+\begin{proof}
+    An isomorphism is given by
+    \[ \cok{D} \longrightarrow X, [(a_1,\ldots,a_n)] \longmapsto ([a_1],\ldots,[a_n]). \qedhere \]
+\end{proof}
+
+
+\subsection{Equivalence operations related to greatest common divisors}
+
+In this subsection, let the base ring~$A$ be a Bézout domain according to the following definition:
+
+\begin{definition}
+    A \emph{Bézout domain} is an integral domain in which every finitely generated ideal is principal.
+\end{definition}
+
+\begin{example}\label{ex:row-gcd}
+    Let~$x,y \in A$. Let~$d$ be a generator of the ideal~$(x,y)$, i.\,e.\@ a gcd of~$x$ and~$y$. Let~$d = sx+ty$, $x=dx'$, $y = dy'$. Then we have the equivalence
+    \[ \begin{pmatrix}x&y\end{pmatrix} \approx\begin{pmatrix}d&0\end{pmatrix}\]
+    of~$(1 \times 2)$-matrices (and similarly with~$(2 \times 1)$-matrices).
+    If~$d = 0$, this equivalence is trivial in view of~$x = y = 0$. If~$d$ is regular, this equivalence is witnessed by the identity
+    \[ \begin{pmatrix}d&0\end{pmatrix} =
+    \begin{pmatrix}x&y\end{pmatrix} \begin{pmatrix}s&-y'\\t&x'\end{pmatrix}\!, \]
+    where the~$(2 \times 2)$-matrix is indeed invertible as its determinant is~$sx' + ty' = 1$. (Over Euclidean domains, this equivalence can also be witnessed by a sequence of the elementary column transformations of Example~\ref{ex:elementary}.) 
+\end{example}
+
+\begin{example}\label{ex:row-zero}
+    By iterating Example~\ref{ex:row-gcd}, every matrix is equivalent to a matrix of the form
+    \[ \begin{pmatrix}d&0&\cdots&0\\\star&\star&\cdots&\star\\\vdots&\vdots&&\vdots\\\star&\star&\cdots&\star\end{pmatrix}\!, \]
+    where~$d$ is a gcd of the original entries of the first row. Similarly, we can arrange for the first column to consist entirely of zeros with the exception of the first entry.
+\end{example}
+
+\begin{example}\label{ex:diag-divide}
+    Let~$x,y \in A$. Let~$d$ be a generator of the ideal~$(x,y)$, i.\,e.\@ a gcd of~$x$ and~$y$. Let~$d = sx+ty$, $x=dx'$, $y = dy'$. Let~$p=xy'=x'y$ be the least common multiple of~$x$ and~$y$. Note that~$d \mid p$. Then we 
+    have the equivalence
+    \[ \begin{pmatrix}x&0\\0&y\end{pmatrix} \approx \begin{pmatrix}d&0\\0&p\end{pmatrix}\!,\]
+    so we can always arrange the first diagonal element to divide the second.
+    If~$d = 0$, this equivalence is trivial in view of~$x = y = d = p = 0$. If~$d$ is regular, this equivalence is witnessed by the identity
+    \[ \begin{pmatrix}s&t\\-y'&x'\end{pmatrix} \begin{pmatrix}x&0\\0&y\end{pmatrix} \begin{pmatrix}1&-ty'\\1&sx'\end{pmatrix} = \begin{pmatrix}d&0\\0&p\end{pmatrix}\!,\]
+    where the two~$(2\times2)$-matrices are invertible as their determinant is one.
+    % [sx, ty; -y'x, x'y]
+    % -sxty'+tysx' = ts(-xy'+yx') = 0
+    % -y'x+x'y = 0
+    % y'xty' + x'ysx' = y'pt + psx' = p(y't + sx') = p
+\end{example}
+
+\begin{example}\label{ex:diag-divide-many}
+    By iterating Example~\ref{ex:diag-divide}, every diagonal matrix is equivalent to a diagonal matrix where successive diagonal entries divide each other.
+\end{example}
+
+
+\section{The Smith normal form}
+
+\begin{definition}A matrix~$P = (a_{ij})_{ij} \in A^{n \times m}$ is \emph{in Smith normal form} if and only if all off-diagonal entries are zero and successive diagonal entries divide each other: $a_{11} \mid a_{22} \mid \ldots \mid a_{rr}$ where~$r = \min\{n,m\}$.\end{definition}
+
+\begin{theorem}\label{thm:smith}Let~$A$ be a principal ideal domain. Let~$P \in A^{n \times m}$ be a matrix. Then~$P$ is equivalent to a matrix in Smith normal form.\end{theorem}
+
+\begin{proof}By Exercise~\ref{ex:diag-divide-many}, it suffices to show that~$P$ is equivalent to a diagonal matrix. We proceed by induction. The cases~$n = 0$ and~$m = 0$ are trivial. Let~$n \geq 1$ and~$m \geq 1$. By Example~\ref{ex:row-zero}, the matrix~$P$ is equivalent to a matrix whose first row consists entirely of zeros, except at the top left. Applying Example~\ref{ex:row-zero} again, but transposed, we can then arrange for the first column to contain only zeros, except at the top left.
+
+However, this second transformation might destroy the zeros obtained in the first step. We can fix this issue by applying Example~\ref{ex:row-zero} yet again for the first row---at the cost of destroying the zeros obtained in the first column. Continuing in this fashion, we would obtain a chain of equivalences of the form
+\[ P \approx
+\underbrace{\begin{pmatrix}d_1&0&\cdots&0\\\star&\star&\cdots&\star\\\vdots&\vdots&&\vdots\\\star&\star&\cdots&\star\end{pmatrix}}_{=\vcentcolon\, P_1} \approx
+\underbrace{\begin{pmatrix}d_2&\star&\cdots&\star\\0&\star&\cdots&\star\\\vdots&\vdots&&\vdots\\0&\star&\cdots&\star\end{pmatrix}}_{=\vcentcolon\, P_2} \approx
+\underbrace{\begin{pmatrix}d_3&0&\cdots&0\\\star&\star&\cdots&\star\\\vdots&\vdots&&\vdots\\\star&\star&\cdots&\star\end{pmatrix}}_{=\vcentcolon\, P_3} \approx \cdots, \]
+where~$d_1$ is a gcd of the entries of the first row of~$P$, $d_2$ is a gcd of the entries of the first column of~$P_1$, $d_3$ is a gcd of the entries of the first row of~$P_2$ and so on. Are we stuck?
+
+No, for~$(d_1) \subseteq (d_2) \subseteq (d_3) \subseteq \ldots$ is an ascending sequence of ideals. As the base ring~$A$ is Noetherian, this sequence stabilizes, in particular there is an index~$i$ such that~$(d_i) = (d_{i+1})$. So~$d_i$ is a gcd of the entries of both the first row of~$P_i$ and the first column of~$P_i$. So the elementary row or the elementary column operations from Example~\ref{ex:elementary} suffice to establish the equivalence
+\[ P \approx P_i \approx \begin{pmatrix}d_i&0&\cdots&0\\0&\star&\cdots&\star\\\vdots&\vdots&&\vdots\\0&\star&\cdots&\star\end{pmatrix}\!.
+\]
+The lower right block is equivalent to a diagonal matrix by the induction hypothesis, and Example~\ref{ex:block} allows us to conclude.
+% d1 ggT von Zeile von P
+% d2 ggT von Spalte von P1
+% d3 ggT von Zeile von P2
+% Wenn (d2) = (d3), dann d2 auch ggT von Zeile von P2.
+\end{proof}
+
+
+\section{Modules over principal ideal domains}
+
+We will use the following facts: Principal ideal domains are Noetherian, and a ring is Noetherian iff every ideal is finitely generated.
+
+\begin{lemma}
+    Let~$A$ be a Noetherian ring. Let~$n \in \mathbb{N}$. Then every submodule~$U \subseteq A^n$ is finitely generated.
+\end{lemma}
+
+\begin{proof}
+    By induction on~$n$. In the base case~$n = 0$, the submodule~$U = \{0\}$ is generated by the empty family.
+
+    In the case~$n \geq 1$, the submodule
+    \[ N \defeq \{ (a_1,\ldots,a_{n-1},0) \,|\, a_1,\ldots,a_{n-1} \in A \} \subseteq A^n \]
+    is isomorphic (by the module isomorphism
+    $i : (a_1,\ldots,a_{n-1},0) \mapsto (a_1,\ldots,a_{n-1})$) to~$A^{n-1}$. So~$U \cap N$ can be regarded as a submodule of~$A^{n-1}$ and is hence, by the induction hypothesis, finitely generated (more precisely,
+    the submodule~$i[U \cap N] \subseteq A^{n-1}$
+    is finitely generated and~$U \cap N$ is isomorphic to~$i[U \cap N]$).
+
+    The isomorphism theorem implies that
+    the injective module homomorphism
+    \[ U/(U \cap N) \longrightarrow A,
+    [(a_1,\ldots,a_n)] \longmapsto a_n \]
+    induces an isomorphism of~$U/(U \cap N)$
+    with its image. This image is an ideal of~$A$ and hence finitely generated.
+
+    As both~$U \cap N$ and~$U/(U \cap N)$ are finitely generated, Exercise~8.3(a) implies that~$U$ is finitely generated as well.
+\end{proof}
+
+\begin{corollary}\label{cor:fg-cok}
+    Let~$M$ be a finitely generated module
+    over a Noetherian ring~$A$.
+    Then~$M$ is isomorphic to the cokernel
+    of a matrix.
+\end{corollary}
+
+\begin{proof}
+    As~$M$ is finitely generated, there
+    is a finite generating family~$(x_1,\ldots,x_n)$
+    for~$M$.
+    By one of the isomorphism theorems,
+    the induced surjective module homomorphism
+    \[ \begin{array}{rrcl}
+        f : & A^n &\longrightarrow& M \\
+        & (a_1,\ldots,a_n) &\longmapsto& \sum_{i=1}^n a_i x_i
+    \end{array} \]
+    gives rise to an isomorphism
+    \[ A^n/\kernel(f) \to M. \]
+    By the lemma, there is a finite generating
+    family~$(y_1,\ldots,y_m)$ for the submodule~$\kernel(f) \subseteq A^n$.
+    We conclude by observing that~$\kernel(f) =
+    \image(P)$ with~$P = (y_1 \mid \ldots \mid y_m) \in A^{n \times m}$ the matrix which has
+    the~$y_i$ as its columns.
+\end{proof}
+
+\begin{theorem}\label{thm:structure}
+    Let~$M$ be a finitely generated module over
+    a principal ideal domain~$A$. Then~$M$ is isomorphic
+    to a direct sum
+    \[ M \cong A/(d_1) \oplus \ldots \oplus A/(d_n) \]
+    for some number~$n \in \mathbb{N}$ and ring elements~$d_1,\ldots,d_n$ such that~$d_1 \mid \ldots \mid d_n$.
+\end{theorem}
+
+\begin{proof}
+    By Corollary~\ref{cor:fg-cok}, the module~$M$ is isomorphic to the cokernel of a matrix~$P$. By Theorem~\ref{thm:smith}, this matrix is equivalent to a matrix~$D$ in Smith normal form. By Proposition~\ref{prop:eqv-cok}, the cokernel of~$P$ is isomorphic to the cokernel of~$D$. By Proposition~\ref{prop:diag-cok}, the cokernel of~$D$ is isomorphic to a direct sum of the desired form:
+    \[ M \cong \cok{P} \cong \cok{D} \cong A/(d_1) \oplus \ldots \oplus A/(d_n). \qedhere \]
+\end{proof}
+
+
+\subsection{Uniqueness}
+
+Except for superfluous summands of the form~$A/(d) = 0$ where~$d$ is a unit of~$A$ in the decomposition provided by Theorem~\ref{thm:structure}, their number~$n$ and the ideals~$(d_i)$ are uniquely determined by~$M$. This fact is a consequence of the following three observations over general commutative rings.
+
+\begin{proposition}
+    Let~$A$ be a commutative ring. Let~$n \in \mathbb{N}$. Then the~$A$-module~$A^n$ can be generated by a family of length less than~$n$ only in the case~$A = 0$.
+\end{proposition}
+
+\begin{proof}
+    This statement is a ring analogue of the vector space result that a vector space of dimension~$n$ cannot be generated by a family of length less than~$n$ and will be proven later in the course.
+\end{proof}
+
+\begin{lemma}\label{lemma:rank}
+    Let~$A$ be a commutative ring.
+    Let~$I_1 \subseteq I_2 \subseteq \ldots \subseteq I_n \subsetneq (1)$ be proper ideals of~$A$. Then the number~$n$ is uniquely determined as the minimal length of a generating family for the module
+    \[ M = A/I_1 \oplus \ldots \oplus A/I_n. \]
+\end{lemma}
+
+\begin{proof}
+    A generating family of length~$n$ is~$(b_1,\ldots,b_n)$, where~$b_i = (0,\ldots,0,[1],0,\ldots,0)$ with the entry~$[1]$ at position~$i$. So the minimal length of a generating family is at most~$n$.
+
+    For the converse inequality, assume that~$M$ can be generated by a family of length less than~$n$. Then so can be the module
+    \[ A/I_n \oplus \ldots \oplus A/I_n = (A/I_n)^n. \]
+    Indeed, if~$([x_1],\ldots,[x_k])$ is a generating family of~$M$ with~$x_1,\ldots,x_k \in A$, then~$([x_1],\ldots,[x_k])$ is a generating family of~$(A/I_n)^n$, where the equivalence class brackets now all denote equivalence classes in~$A/I_n$. The same family also generates~$(A/I_n)^n$ as an~$A/I_n$-module. But this is only possible if~$A/I_n = 0$ which amounts to~$I_n = (1)$, a contradiction.
+\end{proof}
+
+For the proof of the following proposition it is useful to introduce, for an ideal~$J \subseteq A$ and an element~$x \in A$, the notation~$(J : x) \defeq \{ a \in A \,|\, ax \in J \}$. The set~$(J : x)$ is a superset of~$J$ and again an ideal of~$A$. It is improper if and only if~$x \in J$.
+
+\begin{proposition}
+    Let~$M$ be a module over a commutative ring~$A$. Assume that~$M$ is isomorphic to a module of the form
+    \[ M \cong A/I_1 \oplus \ldots \oplus A/I_n \]
+    for some ideals~$I_1 \subseteq I_2 \subseteq \ldots \subseteq I_n$. Then~$I_k$ is uniquely determined by the description
+    \[ I_k = \{ x \in A \,|\, \text{\textnormal{$xM$ has a generating family of length less than~$k$}} \}. \]
+\end{proposition}
+
+\begin{proof}
+    Let~$x \in A$. For an arbitrary ideal~$J \subseteq A$, the canonical surjective module homomorphism~$A \to x(A/J)$ given by~$a \mapsto x[a]$ has kernel~$(J:x)$ and hence induces an isomorphism~$A/(J:x) \cong x(A/J)$. Applying this observation summandwise, we obtain an isomorphism
+    \[ xM \cong A/(I_1:x) \oplus \ldots \oplus A/(I_n:x). \]
+
+    By Lemma~\ref{lemma:rank}, we obtain the following chain of equivalences: The module~$xM$ has a generating family of length less than~$k$ iff~$(I_k:x) = \ldots = (I_n:x) = (1)$, iff~$x \in I_k,\ldots,I_n$, iff~$x \in I_k$.
+\end{proof}
+
+\begin{thebibliography}{9}
+\bibitem{anonymous}
+Anonymous. \href{https://math.stackexchange.com/a/3147043}{Proving uniqueness in the structure theorem for finitely generated modules over a principal ideal domain}. math.SE, 2019.
+
+\bibitem{mrr}
+Ray Mines, Fred Richman, Witenburg. \href{https://link.springer.com/book/10.1007/978-1-4419-8640-5}{A course in constructive algebra}. Springer, 1988.
+
+\bibitem{nw1}
+Marc Nieper-Wißkirchen. \href{https://link.springer.com/book/10.1007/978-3-662-63969-6}{Abstrakte Galois-Theorie}, Springer. 2021.
+
+\bibitem{nw2}
+Marc Nieper-Wißkirchen. \href{https://assets.uni-augsburg.de/media/filer_public/3d/ae/3dae8efb-f1ab-49a9-a671-1cb2c855facc/lineare_algebra.pdf}{Lineare Algebra I, Vorlesungsskript}. 2009.
+
+\bibitem{stanley}
+Richard Stanley. \href{https://math.mit.edu/~rstan/transparencies/alladi.pdf}{Smith normal form and combinatorics}. 2016.
+\end{thebibliography}
+
+\end{document}
